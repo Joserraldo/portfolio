@@ -1,15 +1,7 @@
 import { motion } from 'framer-motion'
-import { Cpu, Gamepad2, Sparkles, Trophy } from 'lucide-react'
 import { copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { fadeUp, stagger, viewport } from './motion'
-
-const trivia = [
-  { icon: Trophy, key: 'tkdTitle', body: 'tkdBody' },
-  { icon: Sparkles, key: 'disTitle', body: 'disBody' },
-  { icon: Cpu, key: 'hwTitle', body: 'hwBody' },
-  { icon: Gamepad2, key: 'owTitle', body: 'owBody' },
-] as const
 
 export default function About() {
   const { t } = useLang()
@@ -48,23 +40,37 @@ export default function About() {
             <motion.p variants={fadeUp} className="leading-relaxed text-fog">
               {t(copy.about.p2)}
             </motion.p>
+            <motion.p variants={fadeUp} className="leading-relaxed text-fog">
+              {t(copy.beyond.beltNote)}{' '}
+              <a href="#beyond" className="font-mono text-xs text-gold underline-offset-4 hover:underline">
+                {t(copy.beyond.title)} ↓
+              </a>
+            </motion.p>
           </div>
 
-          <motion.ul variants={stagger(0.15)} className="grid gap-4 sm:grid-cols-2">
-            {trivia.map(({ icon: Icon, key, body }) => (
-              <motion.li
-                key={key}
-                variants={fadeUp}
-                className="rounded-xl border border-edge bg-panel/80 p-5 transition-colors hover:border-gold/40"
-              >
-                <Icon size={20} className="text-gold" aria-hidden />
-                <h3 className="mt-3 text-sm font-semibold text-snow">{t(copy.about.trivia[key])}</h3>
-                <p className="mt-1.5 text-sm leading-relaxed text-fog">
-                  {t(copy.about.trivia[body])}
+          {/* terminal card */}
+          <motion.div
+            variants={fadeUp}
+            className="self-start overflow-hidden rounded-xl border border-edge bg-void shadow-[0_20px_60px_-30px_rgba(0,0,0,0.8)]"
+          >
+            <div className="flex items-center gap-2 border-b border-edge bg-panel/80 px-4 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-coral" aria-hidden />
+              <span className="h-2.5 w-2.5 rounded-full bg-amber" aria-hidden />
+              <span className="h-2.5 w-2.5 rounded-full bg-mint" aria-hidden />
+              <span className="ml-2 font-mono text-[11px] text-ink-faint">bash — joserraldo</span>
+            </div>
+            <div className="p-5 font-mono text-[13px] leading-relaxed">
+              <p className="text-mint">{t(copy.about.term.prompt)}</p>
+              {copy.about.term.out.map((line, i) => (
+                <p key={i} className="mt-1.5 text-fog">
+                  <span className="text-violet">→</span> {t(line)}
                 </p>
-              </motion.li>
-            ))}
-          </motion.ul>
+              ))}
+              <p className="mt-2 text-mint">
+                $ <span className="inline-block h-4 w-2 animate-pulse bg-gold align-middle" aria-hidden />
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -9,6 +9,7 @@ const LINKS = [
   { href: '#stack', key: 'stack' },
   { href: '#projects', key: 'projects' },
   { href: '#timeline', key: 'timeline' },
+  { href: '#beyond', key: 'beyond' },
   { href: '#contact', key: 'contact' },
 ] as const
 

@@ -24,7 +24,7 @@ export default function Contact() {
       <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
         <motion.header variants={stagger()} initial="hidden" whileInView="show" viewport={viewport}>
           <motion.p variants={fadeUp} className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-            05 — contact
+            07 — contact
           </motion.p>
           <motion.h2 variants={fadeUp} className="mt-3 text-3xl font-bold tracking-tight text-snow sm:text-4xl">
             {t(copy.contact.title)}

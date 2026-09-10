@@ -1,9 +1,19 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail, MapPin } from 'lucide-react'
+import { ArrowRight, Cpu, Gamepad2, Mail, MapPin, Medal, Sparkles } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import { PROFILE, copy } from '../data/content'
+import type { ProjectAccent } from '../data/content'
 import { useLang } from '../i18n/lang'
+import { ACCENT } from './accents'
 import { fadeUp, stagger } from './motion'
 import photo from '../assets/profile.png'
+
+const BADGE_ICONS: Record<'medal' | 'sparkles' | 'cpu' | 'gamepad', LucideIcon> = {
+  medal: Medal,
+  sparkles: Sparkles,
+  cpu: Cpu,
+  gamepad: Gamepad2,
+}
 
 export default function Hero() {
   const { t } = useLang()
@@ -63,12 +73,22 @@ export default function Hero() {
             </a>
           </motion.div>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-10 font-mono text-xs text-fog/80"
-          >
-            {t(copy.hero.fun)}
-          </motion.p>
+          <motion.ul variants={stagger(0.12)} className="mt-10 flex flex-wrap gap-2.5">
+            {copy.hero.badges.map((b) => {
+              const Icon = BADGE_ICONS[b.icon]
+              const a: ProjectAccent = b.accent
+              return (
+                <motion.li
+                  key={b.icon}
+                  variants={fadeUp}
+                  className={`inline-flex items-center gap-1.5 rounded-full border bg-void/60 px-3 py-1 font-mono text-[11px] ${ACCENT[a].chip}`}
+                >
+                  <Icon size={12} aria-hidden />
+                  {t(b.label)}
+                </motion.li>
+              )
+            })}
+          </motion.ul>
         </div>
 
         {/* photo card */}

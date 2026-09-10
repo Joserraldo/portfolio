@@ -13,6 +13,11 @@
   --color-gold: #d9a441;
   --color-gold-soft: #ecc87d;
   --color-mint: #5ccb9c;
+  /* syntax-highlight accents (identity palette) */
+  --color-coral: #e5636f;
+  --color-sky: #61afef;
+  --color-violet: #c678dd;
+  --color-amber: #e5a04c;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
   --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }

@@ -25,6 +25,7 @@ export const copy = {
     stack: { es: 'Stack', en: 'Stack' },
     projects: { es: 'Proyectos', en: 'Projects' },
     timeline: { es: 'Trayectoria', en: 'Timeline' },
+    beyond: { es: 'Más allá', en: 'Beyond' },
     contact: { es: 'Contacto', en: 'Contact' },
     menu: { es: 'Abrir menú', en: 'Open menu' },
     close: { es: 'Cerrar menú', en: 'Close menu' },
@@ -48,6 +49,12 @@ export const copy = {
       es: 'Cinturón negro de Taekwondo · Disney Alumni ✨ · Armador de PCs',
       en: 'Taekwondo black belt · Disney Alumni ✨ · PC builder',
     },
+    badges: [
+      { icon: 'medal', label: { es: 'Cinturón negro TKD', en: 'TKD black belt' }, accent: 'gold' },
+      { icon: 'sparkles', label: { es: 'Disney Alumni', en: 'Disney Alumni' }, accent: 'amber' },
+      { icon: 'cpu', label: { es: 'Armador de PCs', en: 'PC builder' }, accent: 'sky' },
+      { icon: 'gamepad', label: { es: 'Overwatch', en: 'Overwatch' }, accent: 'coral' },
+    ] as { icon: 'medal' | 'sparkles' | 'cpu' | 'gamepad'; label: L; accent: ProjectAccent }[],
     altPhoto: { es: 'Retrato de José Alejandro Téllez Prada', en: 'Portrait of José Alejandro Téllez Prada' },
   },
   about: {
@@ -86,6 +93,15 @@ export const copy = {
         en: 'Overwatch fan. Strategy, synergy and match reviews.',
       },
     },
+    term: {
+      prompt: { es: 'joserraldo@unab:~$ whoami', en: 'joserraldo@unab:~$ whoami' },
+      out: [
+        { es: 'fundador → diseñando Calaut.pro a las 2am y cumpliendo.', en: 'founder → designing Calaut.pro at 2am and shipping.' },
+        { es: 'atleta → el tatami también es mi sala de juntas.', en: 'athlete → the tatami is also my boardroom.' },
+        { es: 'alumni Disney → estándares internacionales de fábrica.', en: 'Disney alumni → international standards by default.' },
+        { es: 'builder → PCs ajenas incluidas.', en: 'builder → other people’s PCs included.' },
+      ] as L[],
+    },
   },
   skills: {
     title: { es: 'Stack', en: 'Stack' },
@@ -97,12 +113,32 @@ export const copy = {
   projects: {
     title: { es: 'Proyectos', en: 'Projects' },
     lead: {
-      es: 'Diez cosas que construí — casi todo en público.',
-      en: 'Ten things I built — most of it in public.',
+      es: 'Construido de verdad, casi todo en público.',
+      en: 'Real builds, most of it in public.',
     },
     viewCode: { es: 'Código', en: 'Code' },
     visit: { es: 'Visitar', en: 'Visit' },
     flagship: { es: 'Buque insignia', en: 'Flagship' },
+    building: { es: 'En curso', en: 'In progress' },
+  },
+  flagship: {
+    kicker: { es: 'El proyecto que es mi bebé', en: 'The project I’m raising' },
+    title: { es: 'Calaut.pro', en: 'Calaut.pro' },
+    cta: { es: 'Abrir Calaut.pro', en: 'Open Calaut.pro' },
+    stackLabel: { es: 'Bajo el capó', en: 'Under the hood' },
+    stack: 'TypeScript · Next.js · Firebase · Google Calendar API · WhatsApp links · PWA',
+    altShot: {
+      es: 'Captura de la landing de Calaut.pro',
+      en: 'Screenshot of the Calaut.pro landing page',
+    },
+  },
+  beyond: {
+    title: { es: 'Más allá del código', en: 'Beyond the code' },
+    lead: {
+      es: 'Lo que me forma tanto como un buen commit.',
+      en: 'What shapes me as much as a good commit.',
+    },
+    beltNote: { es: 'Disciplina negra, sentido del humor dorado.', en: 'Black-belt discipline, gold-belt humor.' },
   },
   timeline: {
     title: { es: 'Trayectoria', en: 'Timeline' },
@@ -183,10 +219,21 @@ export const skillGroups: SkillGroup[] = [
 
 /* ────────────────────────── projects (10, real URLs) ─────────────── */
 
+export type ProjectAccent = 'gold' | 'mint' | 'coral' | 'sky' | 'violet' | 'amber'
+
 export interface Project {
   name: string
-  url: string
+  url?: string
+  code?: string
   tech: string
+  icon:
+    | 'calendar' | 'bus' | 'factory' | 'graduation' | 'brain'
+    | 'clipboard' | 'download' | 'wallet' | 'android' | 'gamepad'
+    | 'radio' | 'heart'
+  kind: L
+  accent: ProjectAccent
+  role: L
+  when: L
   blurb: L
   featured?: boolean
 }
@@ -195,26 +242,83 @@ export const projects: Project[] = [
   {
     name: 'Calaut.pro',
     url: 'https://calaut.pro',
-    tech: 'SaaS · Full-Stack',
+    tech: 'SaaS · Full-Stack · PWA',
     featured: true,
+    icon: 'calendar',
+    accent: 'gold',
+    kind: { es: 'Buque insignia', en: 'Flagship' },
+    role: { es: 'Founder & dev único', en: 'Founder & sole dev' },
+    when: { es: 'nov 2025 — hoy', en: 'Nov 2025 — now' },
     blurb: {
-      es: 'Mi propia plataforma B2B: la diseño, la construyo y la escalo — arquitectura, backend, frontend y deploy.',
-      en: 'My own B2B platform: I design, build and scale it — architecture, backend, frontend and deploy.',
+      es: 'Plataforma B2B de agendamiento multi-tenant con privacidad por roles, sync bidireccional con Google Calendar y automatización omnicanal por WhatsApp y email.',
+      en: 'Multi-tenant B2B scheduling platform with role-based privacy, two-way Google Calendar sync and omnichannel WhatsApp + email automation.',
     },
   },
   {
-    name: 'FactoryFlow-ERP',
-    url: 'https://github.com/Joserraldo/FactoryFlow-ERP',
-    tech: 'TypeScript',
+    name: 'BUS UNAB',
+    tech: 'Movilidad universitaria',
+    icon: 'bus',
+    accent: 'sky',
+    kind: { es: 'En construcción', en: 'Building' },
+    role: { es: 'Equipo UNAB', en: 'UNAB team' },
+    when: { es: '2026 — en curso', en: '2026 — in progress' },
     blurb: {
-      es: 'ERP de ingeniería de software, heredero de «Factory OS» (Hackathon Colombia 5.0).',
-      en: 'A software-engineering ERP, successor of “Factory OS” (Hackathon Colombia 5.0).',
+      es: 'Nuestro intento de revolucionar el transporte del campus: rutas, horarios y cobertura universitaria conectadas.',
+      en: 'Our shot at revolutionizing campus transport: connected routes, schedules and university coverage.',
+    },
+  },
+  {
+    name: 'Factory OS → FactoryFlow-ERP',
+    url: 'https://factoryos-beta.netlify.app',
+    code: 'https://github.com/Joserraldo/FactoryFlow-ERP',
+    tech: 'TypeScript · IoT simulado',
+    icon: 'factory',
+    accent: 'coral',
+    kind: { es: 'Hackathon → ERP', en: 'Hackathon → ERP' },
+    role: { es: 'Frontend & arquitectura', en: 'Frontend & architecture' },
+    when: { es: 'abr 2026', en: 'Apr 2026' },
+    blurb: {
+      es: 'MVP de monitoreo industrial en tiempo real (Colombia 5.0 Hackathon): anomalías de máquinas, alertas y consulta en lenguaje natural — hoy evolucionando a un ERP completo.',
+      en: 'Real-time industrial monitoring MVP (Colombia 5.0 Hackathon): machine anomalies, alerts and natural-language queries — now evolving into a full ERP.',
+    },
+  },
+  {
+    name: 'Nexia+',
+    url: 'https://nexia-firebase.web.app',
+    tech: 'Firebase · Auth · RTDB',
+    icon: 'graduation',
+    accent: 'violet',
+    kind: { es: 'Impacto social', en: 'Social impact' },
+    role: { es: 'Backend & arquitectura', en: 'Backend & architecture' },
+    when: { es: 'oct 2025', en: 'Oct 2025' },
+    blurb: {
+      es: 'Plataforma educativa para una fundación sin ánimo de lucro, construida en hackathon competitivo: auth segura y base de datos en tiempo real.',
+      en: 'Educational platform for a non-profit foundation, built in a competitive hackathon: secure auth and real-time database.',
+    },
+  },
+  {
+    name: 'proyecto-IA-MetroPT-3',
+    url: 'https://github.com/Joserraldo/proyecto-IA-MetroPT-3',
+    tech: 'Python · Streamlit · Expo',
+    icon: 'brain',
+    accent: 'mint',
+    kind: { es: 'IA aplicada', en: 'Applied AI' },
+    role: { es: 'Proyecto final', en: 'Final project' },
+    when: { es: '2025', en: '2025' },
+    blurb: {
+      es: 'Predicción para un metro: notebooks de ML, dashboard y app móvil en un solo entregable.',
+      en: 'Metro demand prediction: ML notebooks, dashboard and mobile app in one deliverable.',
     },
   },
   {
     name: 'clipboard-file-injector',
     url: 'https://github.com/Joserraldo/clipboard-file-injector',
     tech: 'JavaScript · Chrome MV3',
+    icon: 'clipboard',
+    accent: 'amber',
+    kind: { es: 'Herramienta', en: 'Tool' },
+    role: { es: 'Solo', en: 'Solo' },
+    when: { es: '2026', en: '2026' },
     blurb: {
       es: 'Extensión que inyecta imágenes del portapapeles directo en inputs de archivo, sin descargas.',
       en: 'Extension that injects clipboard images straight into file inputs — no downloads.',
@@ -224,24 +328,39 @@ export const projects: Project[] = [
     name: 'ytdownloader',
     url: 'https://github.com/Joserraldo/ytdownloader',
     tech: 'Python · ffmpeg',
+    icon: 'download',
+    accent: 'amber',
+    kind: { es: 'Herramienta', en: 'Tool' },
+    role: { es: 'Solo', en: 'Solo' },
+    when: { es: '2026', en: '2026' },
     blurb: {
       es: 'App portable de Windows: MP4 a máxima calidad o MP3 320 kbps, con ffmpeg embebido.',
       en: 'Portable Windows app: max-quality MP4 or 320 kbps MP3, with bundled ffmpeg.',
     },
   },
   {
-    name: 'proyecto-IA-MetroPT-3',
-    url: 'https://github.com/Joserraldo/proyecto-IA-MetroPT-3',
-    tech: 'Python · Streamlit · Expo',
+    name: 'budget_laravel',
+    url: 'https://github.com/Joserraldo/budget_laravel',
+    tech: 'PHP · Laravel · MySQL',
+    icon: 'wallet',
+    accent: 'mint',
+    kind: { es: 'Monolito', en: 'Monolith' },
+    role: { es: 'Duo · taller de arquitectura', en: 'Duo · architecture workshop' },
+    when: { es: '2026', en: '2026' },
     blurb: {
-      es: 'Proyecto final de IA: predicción para un metro con notebooks, dashboard y app móvil.',
-      en: 'Final AI project: metro prediction with notebooks, a dashboard and a mobile app.',
+      es: 'Aplicación monolítica de control financiero personal, extendida a medida en el taller de arquitectura.',
+      en: 'Personal-finance monolith app, custom-extended in the architecture workshop.',
     },
   },
   {
     name: 'UnabStore',
     url: 'https://github.com/Joserraldo/UnabStore',
     tech: 'Kotlin · Android',
+    icon: 'android',
+    accent: 'sky',
+    kind: { es: 'Nativo', en: 'Native' },
+    role: { es: 'Académico', en: 'Academic' },
+    when: { es: '2025', en: '2025' },
     blurb: {
       es: 'Tienda nativa Android escrita en Kotlin.',
       en: 'A native Android storefront written in Kotlin.',
@@ -250,7 +369,12 @@ export const projects: Project[] = [
   {
     name: 'HormigaCulonaGame',
     url: 'https://github.com/Joserraldo/HormigaCulonaGame',
-    tech: 'Unity · C#',
+    tech: 'Unity · C# · shaders',
+    icon: 'gamepad',
+    accent: 'coral',
+    kind: { es: 'Juego', en: 'Game' },
+    role: { es: 'Multimedios', en: 'Multimedia course' },
+    when: { es: '2025', en: '2025' },
     blurb: {
       es: 'Juego multimedia en Unity con shaders propios.',
       en: 'A multimedia game in Unity with custom shaders.',
@@ -260,6 +384,11 @@ export const projects: Project[] = [
     name: 'Iot_learning',
     url: 'https://github.com/Joserraldo/Iot_learning',
     tech: 'C++ · ESP32 · Azure IoT',
+    icon: 'radio',
+    accent: 'violet',
+    kind: { es: 'Laboratorio', en: 'Lab' },
+    role: { es: 'Self-taught', en: 'Self-taught' },
+    when: { es: '2026', en: '2026' },
     blurb: {
       es: 'Laboratorio de IoT embebido: ESP32, Arduino, MQTT y Azure IoT.',
       en: 'Embedded IoT lab: ESP32, Arduino, MQTT and Azure IoT.',
@@ -269,26 +398,71 @@ export const projects: Project[] = [
     name: 'corazon · diabetes',
     url: 'https://github.com/Joserraldo/corazon',
     tech: 'Python · ML',
+    icon: 'heart',
+    accent: 'coral',
+    kind: { es: 'Data / ML', en: 'Data / ML' },
+    role: { es: 'Investigación', en: 'Research' },
+    when: { es: '2025', en: '2025' },
     blurb: {
       es: 'Notebooks de ML para predicción de cardiopatías y diabetes.',
       en: 'ML notebooks for heart-disease and diabetes prediction.',
     },
   },
-  {
-    name: 'trade-upb-connect',
-    url: 'https://github.com/Joserraldo/trade-upb-connect',
-    tech: 'TypeScript',
-    blurb: {
-      es: 'Plataforma educativa de trading — mi trabajo sobre una base compartida.',
-      en: 'An educational trading platform — my work on a shared base.',
-    },
-  },
 ]
+
+/* ────────────────────────── flagship (Calaut.pro) ────────────────── */
+
+export const flagship = {
+  name: 'Calaut.pro',
+  url: 'https://calaut.pro',
+  tagline: {
+    es: 'Tu negocio, en piloto automático.',
+    en: 'Your business, on autopilot.',
+  },
+  intro: {
+    es: 'Lo diseñé, lo construyo y lo escalo yo mismo — del multi-tenant al deploy.',
+    en: 'I designed it, I build it, I scale it — multi-tenant through deploy.',
+  },
+  bullets: [
+    {
+      es: 'Arquitectura SaaS B2B multi-tenant con privacidad por roles: agendas aisladas y salas privadas entre colegas.',
+      en: 'Multi-tenant B2B SaaS architecture with role-based privacy: isolated agendas and hidden colleague rooms.',
+    },
+    {
+      es: 'Sincronización bidireccional con Google Calendar, sin dobles reservas.',
+      en: 'Bi-directional Google Calendar synchronization — no double bookings.',
+    },
+    {
+      es: 'Automatización omnicanal: confirmaciones, recordatorios a 24h y loops de reseñas por WhatsApp dinámico y email.',
+      en: 'Omnichannel automation: confirmations, 24h reminders and review loops via dynamic WhatsApp links and email.',
+    },
+    {
+      es: 'CRM con perfilado automático de pacientes y récord clínico opcional cumpliendo Res. 2275 y 1995 (Colombia).',
+      en: 'CRM with automatic patient profiling and optional clinical records compliant with Colombian Res. 2275 & 1995.',
+    },
+    {
+      es: 'PWA instalable sin App Store: modo offline y carga por debajo de 1.2 segundos.',
+      en: 'App-Store-free PWA: offline capabilities and sub-1.2-second load times.',
+    },
+    {
+      es: 'Iteración con usuarios reales en medicina, estética, legal y educación — eliminando fricción de reserva.',
+      en: 'Iterated with real users across medical, aesthetics, legal and education — eliminating booking friction.',
+    },
+  ] as L[],
+  metrics: [
+    { value: '99.9%', label: { es: 'uptime', en: 'uptime' } },
+    { value: '<1.2 s', label: { es: 'carga PWA', en: 'PWA load' } },
+    { value: '4', label: { es: 'industrias activas', en: 'live industries' } },
+    { value: '2-way', label: { es: 'sync Google Calendar', en: 'Google Calendar sync' } },
+  ],
+}
+
 
 /* ────────────────────────── timeline (4) ─────────────────────────── */
 
 export interface Milestone {
-  icon: 'rocket' | 'trophy' | 'sparkles' | 'cap'
+  icon: 'rocket' | 'trophy' | 'sparkles' | 'cap' | 'bus' | 'factory' | 'medal' | 'graduation'
+  accent: ProjectAccent
   title: L
   org: L
   body: L
@@ -298,36 +472,73 @@ export interface Milestone {
 export const milestones: Milestone[] = [
   {
     icon: 'rocket',
+    accent: 'gold',
     title: { es: 'Founder & Full-Stack Dev', en: 'Founder & Full-Stack Dev' },
     org: { es: 'Calaut.pro', en: 'Calaut.pro' },
     body: {
-      es: 'Construyendo y escalando mi plataforma SaaS B2B, del diseño al deploy.',
-      en: 'Building and scaling my B2B SaaS platform, design through deploy.',
+      es: 'SaaS B2B multi-tenant propio: arquitectura, Google Calendar sync, automatización WhatsApp/email y compliance de salud — del diseño al deploy.',
+      en: 'My own multi-tenant B2B SaaS: architecture, Google Calendar sync, WhatsApp/email automation and health compliance — design through deploy.',
     },
-    when: { es: 'Actual', en: 'Current' },
+    when: { es: 'nov 2025 — hoy', en: 'Nov 2025 — now' },
   },
   {
-    icon: 'trophy',
-    title: { es: 'Hackathon Colombia 5.0', en: 'Hackathon Colombia 5.0' },
+    icon: 'bus',
+    accent: 'sky',
+    title: { es: 'Movilidad universitaria', en: 'Campus mobility' },
+    org: { es: 'BUS UNAB', en: 'BUS UNAB' },
+    body: {
+      es: 'Revolucionando el transporte del campus: rutas y horarios universitarios, en construcción.',
+      en: 'Revolutionizing campus transport: university routes and schedules — under construction.',
+    },
+    when: { es: '2026 — en curso', en: '2026 — in progress' },
+  },
+  {
+    icon: 'factory',
+    accent: 'coral',
+    title: { es: 'Hackathon Colombia 5.0', en: 'Colombia 5.0 Hackathon' },
     org: { es: '«Factory OS»', en: '“Factory OS”' },
     body: {
-      es: 'Prototipo funcional de ERP entregado en tiempo récord, bajo presión.',
-      en: 'A working ERP prototype delivered in record time, under pressure.',
+      es: 'MVP funcional de monitoreo industrial con sensores simulados, alertas y consultas en lenguaje natural — entregado contra reloj.',
+      en: 'Working industrial-monitoring MVP with simulated sensors, alerts and natural-language queries — delivered against the clock.',
     },
-    when: { es: 'Hito', en: 'Milestone' },
+    when: { es: 'abr 2026', en: 'Apr 2026' },
+  },
+  {
+    icon: 'graduation',
+    accent: 'violet',
+    title: { es: 'Hackathon de impacto social', en: 'Social-impact hackathon' },
+    org: { es: 'Nexia+', en: 'Nexia+' },
+    body: {
+      es: 'Plataforma educativa para una fundación: backend Firebase, auth segura y base de datos en tiempo real bajo presión.',
+      en: 'Educational platform for a foundation: Firebase backend, secure auth and a real-time database under pressure.',
+    },
+    when: { es: 'oct 2025', en: 'Oct 2025' },
   },
   {
     icon: 'sparkles',
+    accent: 'amber',
     title: { es: 'Disney Cultural Exchange', en: 'Disney Cultural Exchange' },
     org: { es: 'Alumni ✨', en: 'Alumni ✨' },
     body: {
-      es: 'Trabajo y comunicación en un entorno multicultural exigente.',
-      en: 'Worked and communicated in a demanding multicultural environment.',
+      es: 'Trabajo real y comunicación en un entorno multicultural exigente — mi crash course de estándares.',
+      en: 'Real work and communication in a demanding multicultural environment — my crash course in standards.',
     },
     when: { es: 'Programa', en: 'Program' },
   },
   {
+    icon: 'medal',
+    accent: 'gold',
+    title: { es: 'Cinturón negro de Taekwondo', en: 'Taekwondo black belt' },
+    org: { es: 'Atleta de alto rendimiento', en: 'High-performance athlete' },
+    body: {
+      es: 'El tatami enseña lo mismo que los deadlines: respirar, medir distancia y golpear en el momento exacto.',
+      en: 'The tatami teaches what deadlines do: breathe, measure distance, strike at the exact moment.',
+    },
+    when: { es: 'Vida', en: 'Life' },
+  },
+  {
     icon: 'cap',
+    accent: 'mint',
     title: { es: 'Ingeniería de Sistemas', en: 'Systems Engineering' },
     org: { es: 'UNAB', en: 'UNAB' },
     body: {
