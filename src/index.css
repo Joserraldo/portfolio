@@ -7,7 +7,11 @@
   --color-ink: #e8efe9;
   --color-ink-dim: #9db0a6;
   --color-ink-faint: #63756b;
+  --color-snow: #edf3ee;
+  --color-fog: #b9c9c0;
+  --color-edge: #223a2f;
   --color-gold: #d9a441;
+  --color-gold-soft: #ecc87d;
   --color-mint: #5ccb9c;
   --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
   --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

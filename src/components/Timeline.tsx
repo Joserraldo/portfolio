@@ -42,7 +42,7 @@ export default function Timeline() {
                 viewport={viewport}
                 className="relative"
               >
-                <span className="absolute -left-[calc(2.5rem+17px)] top-0 flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-ink text-gold">
+                <span className="absolute -left-[calc(2.5rem+17px)] top-0 flex h-8 w-8 items-center justify-center rounded-full border border-gold/40 bg-void text-gold">
                   <Icon size={15} aria-hidden />
                 </span>
                 <p className="font-mono text-[11px] uppercase tracking-wider text-mint">{t(m.when)}</p>

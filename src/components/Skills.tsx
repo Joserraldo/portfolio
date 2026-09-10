@@ -66,7 +66,7 @@ export default function Skills() {
                   {g.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-md border border-edge bg-ink/70 px-2 py-0.5 font-mono text-[11px] text-fog"
+                      className="rounded-md border border-edge bg-void/60 px-2 py-0.5 font-mono text-[11px] text-fog"
                     >
                       {item}
                     </li>

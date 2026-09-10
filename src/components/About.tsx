@@ -55,7 +55,7 @@ export default function About() {
               <motion.li
                 key={key}
                 variants={fadeUp}
-                className="rounded-xl border border-edge bg-ink/60 p-5 transition-colors hover:border-gold/40"
+                className="rounded-xl border border-edge bg-panel/80 p-5 transition-colors hover:border-gold/40"
               >
                 <Icon size={20} className="text-gold" aria-hidden />
                 <h3 className="mt-3 text-sm font-semibold text-snow">{t(copy.about.trivia[key])}</h3>

@@ -51,7 +51,7 @@ export default function Hero() {
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-gold-soft"
+              className="inline-flex items-center gap-2 rounded-lg bg-gold px-5 py-2.5 text-sm font-semibold text-void transition hover:bg-gold-soft"
             >
               {t(copy.hero.ctaProjects)} <ArrowRight size={16} aria-hidden />
             </a>

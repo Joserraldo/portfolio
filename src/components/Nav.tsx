@@ -17,7 +17,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-edge/60 bg-ink/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-edge/60 bg-void/85 backdrop-blur-md">
       <nav
         className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6"
         aria-label="Main"
@@ -51,7 +51,7 @@ export default function Nav() {
                 aria-pressed={lang === code}
                 className={`px-2.5 py-1 font-mono text-xs uppercase transition-colors ${
                   lang === code
-                    ? 'bg-gold text-ink'
+                    ? 'bg-gold text-void'
                     : 'text-fog hover:text-snow'
                 }`}
               >

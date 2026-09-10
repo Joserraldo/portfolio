@@ -36,7 +36,7 @@ export default function Contact() {
           <motion.div variants={fadeUp}>
             <a
               href={`mailto:${PROFILE.email}`}
-              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-ink transition hover:bg-gold-soft"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold text-void transition hover:bg-gold-soft"
             >
               <Mail size={16} aria-hidden />
               {t(copy.contact.mailCta)}
