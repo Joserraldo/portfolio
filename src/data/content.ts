@@ -1,5 +1,11 @@
 import type { L } from '../i18n/lang'
 
+import agendaShot from '../assets/calaut-agenda.webp'
+import pilotoShot from '../assets/calaut-piloto.webp'
+import omnicanalShot from '../assets/calaut-omnicanal.webp'
+import crmShot from '../assets/calaut-crm.webp'
+import healthShot from '../assets/calaut-health.webp'
+
 export type { L }
 
 /* ────────────────────────── profile facts ────────────────────────── */
@@ -126,7 +132,12 @@ export const copy = {
     title: { es: 'Calaut.pro', en: 'Calaut.pro' },
     cta: { es: 'Abrir Calaut.pro', en: 'Open Calaut.pro' },
     stackLabel: { es: 'Bajo el capó', en: 'Under the hood' },
-    stack: 'TypeScript · Next.js · Firebase · Google Calendar API · WhatsApp links · PWA',
+    stack: 'React 18 · TypeScript · Firebase · Cloud Functions v2 · Google Calendar API · Bold · Resend · PWA',
+    galleryTitle: { es: 'Secciones del producto', en: 'Product sections' },
+    galleryLead: {
+      es: 'Capturas reales del flujo: agenda por salas, piloto automático, omnicanalidad, CRM y módulo clínico.',
+      en: 'Real screenshots of the flow: room-based schedule, autopilot, omnichannel, CRM and the clinical module.',
+    },
     altShot: {
       es: 'Captura de la landing de Calaut.pro',
       en: 'Screenshot of the Calaut.pro landing page',
@@ -504,9 +515,46 @@ export const flagship = {
       en: 'Iterated with real users across medical, aesthetics, legal and education — eliminating booking friction.',
     },
   ] as L[],
+  gallery: [
+    {
+      src: agendaShot,
+      caption: {
+        es: 'El poder de tu agenda: consultorios, especialidades y vistas por rol sobre una sola grilla.',
+        en: 'Your agenda at a glance: rooms, specialties and per-role views on a single grid.',
+      },
+    },
+    {
+      src: pilotoShot,
+      caption: {
+        es: 'El piloto automático en 5 pasos: del agendamiento al recordatorio de 24 h sin intervención.',
+        en: 'Autopilot in 5 steps: from booking to the 24h reminder with zero intervention.',
+      },
+    },
+    {
+      src: omnicanalShot,
+      caption: {
+        es: 'Omnicanalidad: confirmación al paciente por WhatsApp y emails transaccionales propios.',
+        en: 'Omnichannel: patient confirmation over WhatsApp plus own transactional emails.',
+      },
+    },
+    {
+      src: crmShot,
+      caption: {
+        es: 'CRM y landing pública por negocio: cada tenant con su micrositio y reactivación de clientes.',
+        en: 'CRM and per-business public landing: every tenant gets its own microsite and client reactivation.',
+      },
+    },
+    {
+      src: healthShot,
+      caption: {
+        es: 'Módulo clínico opcional: RIPS JSON (Res. 2275) e historia clínica inmutable (Res. 1995).',
+        en: 'Optional clinical module: automatic RIPS JSON (Res. 2275) and immutable clinical records (Res. 1995).',
+      },
+    },
+  ] as { src: string; caption: L }[],
   metrics: [
-    { value: '99.9%', label: { es: 'uptime', en: 'uptime' } },
-    { value: '<1.2 s', label: { es: 'carga PWA', en: 'PWA load' } },
+    { value: '43', label: { es: 'Cloud Functions', en: 'Cloud Functions' } },
+    { value: '25', label: { es: 'rutas con reglas de seguridad', en: 'rule-protected paths' } },
     { value: '4', label: { es: 'industrias activas', en: 'live industries' } },
     { value: '2-way', label: { es: 'sync Google Calendar', en: 'Google Calendar sync' } },
   ],

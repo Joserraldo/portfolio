@@ -102,6 +102,30 @@ export default function Flagship() {
             />
           </motion.figure>
 
+          {/* gallery: real product sections */}
+          <motion.div variants={fadeUp} className="mt-10">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-gold">
+              {t(copy.flagship.galleryTitle)}
+            </p>
+            <p className="mt-1 max-w-2xl text-xs leading-relaxed text-fog">
+              {t(copy.flagship.galleryLead)}
+            </p>
+            <motion.ul variants={stagger(0.05)} className="mt-4 grid gap-4 sm:grid-cols-2">
+              {flagship.gallery.map((g) => (
+                <motion.li
+                  key={g.src}
+                  variants={fadeUp}
+                  className="overflow-hidden rounded-xl border border-edge bg-void"
+                >
+                  <img src={g.src} alt={t(g.caption)} loading="lazy" className="block w-full" />
+                  <p className="border-t border-edge/60 px-4 py-2.5 text-xs leading-relaxed text-fog">
+                    {t(g.caption)}
+                  </p>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
+
           <motion.p variants={fadeUp} className="mt-8 font-mono text-[11px] uppercase tracking-wider text-ink-faint">
             {t(copy.flagship.stackLabel)}: <span className="text-mint">{copy.flagship.stack}</span>
           </motion.p>
