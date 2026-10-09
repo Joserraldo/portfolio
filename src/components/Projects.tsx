@@ -4,16 +4,19 @@ import {
   CalendarDays,
   ClipboardList,
   Download,
+  Egg,
   Factory,
   Gamepad2,
   GraduationCap,
   HeartPulse,
   Radio,
+  Shirt,
   Smartphone,
   Bus,
   Code2,
   ExternalLink,
   Wallet,
+  Wrench,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { MouseEvent, ReactNode } from 'react'
@@ -36,6 +39,9 @@ const ICONS: Record<Project['icon'], LucideIcon> = {
   gamepad: Gamepad2,
   radio: Radio,
   heart: HeartPulse,
+  wrench: Wrench,
+  shirt: Shirt,
+  egg: Egg,
 }
 
 function Tilt({ children, className }: { children: ReactNode; className?: string }) {

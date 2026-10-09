@@ -8,7 +8,7 @@ export const PROFILE = {
   name: 'José Alejandro Téllez Prada',
   handle: '@Joserraldo',
   location: 'Bucaramanga, Colombia',
-  email: 'Joseal…006@gmail.com',
+  email: 'Joseale2006@gmail.com',
   github: 'https://github.com/Joserraldo',
   linkedin:
     'https://www.linkedin.com/in/jos%C3%A9-alejandro-t%C3%A9llez-prada-489312366/',
@@ -217,7 +217,7 @@ export const skillGroups: SkillGroup[] = [
   },
 ]
 
-/* ────────────────────────── projects (10, real URLs) ─────────────── */
+/* ────────────────────────── projects (real URLs) ─────────────── */
 
 export type ProjectAccent = 'gold' | 'mint' | 'coral' | 'sky' | 'violet' | 'amber'
 
@@ -229,7 +229,7 @@ export interface Project {
   icon:
     | 'calendar' | 'bus' | 'factory' | 'graduation' | 'brain'
     | 'clipboard' | 'download' | 'wallet' | 'android' | 'gamepad'
-    | 'radio' | 'heart'
+    | 'radio' | 'heart' | 'wrench' | 'shirt' | 'egg'
   kind: L
   accent: ProjectAccent
   role: L
@@ -255,16 +255,16 @@ export const projects: Project[] = [
     },
   },
   {
-    name: 'BUS UNAB',
-    tech: 'Movilidad universitaria',
+    name: 'BUS UNAB · BUCARATRANSIT',
+    tech: 'Kotlin Multiplatform · Laravel',
     icon: 'bus',
     accent: 'sky',
     kind: { es: 'En construcción', en: 'Building' },
     role: { es: 'Equipo UNAB', en: 'UNAB team' },
     when: { es: '2026 — en curso', en: '2026 — in progress' },
     blurb: {
-      es: 'Nuestro intento de revolucionar el transporte del campus: rutas, horarios y cobertura universitaria conectadas.',
-      en: 'Our shot at revolutionizing campus transport: connected routes, schedules and university coverage.',
+      es: 'App Kotlin Multiplatform con backend Laravel white-label multi-tenant: cada organización descarga su marca y logo desde la API. Rutas y horarios del campus, en construcción.',
+      en: 'Kotlin Multiplatform app with a white-label multi-tenant Laravel backend: every organization pulls its own brand and logo from the API. Campus routes and schedules, under construction.',
     },
   },
   {
@@ -406,6 +406,61 @@ export const projects: Project[] = [
     blurb: {
       es: 'Notebooks de ML para predicción de cardiopatías y diabetes.',
       en: 'ML notebooks for heart-disease and diabetes prediction.',
+    },
+  },
+  {
+    name: 'hidrolavados.com',
+    url: 'https://hidrolavados.com',
+    tech: 'Next.js · Firebase · Supabase',
+    icon: 'wrench',
+    accent: 'sky',
+    kind: { es: 'En producción', en: 'Live' },
+    role: { es: 'Dev único · negocio familiar', en: 'Sole dev · family business' },
+    when: { es: '2026', en: '2026' },
+    blurb: {
+      es: 'Reconstrucción del sitio del taller de hidrolavadoras de mi papá (Kärcher Gold Partner): catálogo, alquileres nativos, panel del taller con boletas y fotos WebP, y SEO local.',
+      en: 'Rebuild of my dad’s pressure-washer shop site (Kärcher Gold Partner): catalog, native rentals, workshop panel with receipts and WebP photos, plus local SEO.',
+    },
+  },
+  {
+    name: 'Bordados Zapatoca',
+    url: 'https://bordados-zapatoca.vercel.app',
+    tech: 'Next.js · carrito + WhatsApp',
+    icon: 'shirt',
+    accent: 'coral',
+    kind: { es: 'En producción', en: 'Live' },
+    role: { es: 'Dev único · fundación familiar', en: 'Sole dev · family foundation' },
+    when: { es: '2026', en: '2026' },
+    blurb: {
+      es: 'Tienda de bordados a mano de la fundación de mi tía: blusas, bolsos y fundas con carrito y checkout directo por WhatsApp, sin backend.',
+      en: 'My aunt’s foundation handmade-embroidery storefront: blouses, bags and covers with a cart and direct WhatsApp checkout — no backend.',
+    },
+  },
+  {
+    name: 'damaged_eggs_CNN',
+    url: 'https://github.com/Joserraldo/damaged_eggs_CNN',
+    tech: 'YOLOv8n · FastAPI · Expo',
+    icon: 'egg',
+    accent: 'violet',
+    kind: { es: 'Visión por computador', en: 'Computer vision' },
+    role: { es: 'Dupla UNAB', en: 'UNAB duo' },
+    when: { es: '2026', en: '2026' },
+    blurb: {
+      es: 'Detección de huevos good/crack con YOLOv8n entrenado en Colab, API FastAPI sobre EC2 y app Expo para capturar desde el celular.',
+      en: 'Good/crack egg detection with YOLOv8n trained on Colab, a FastAPI service on EC2 and an Expo app for phone capture.',
+    },
+  },
+  {
+    name: 'urban-mobility-hub',
+    tech: 'TypeScript · PWA · YOLOv8n-ONNX',
+    icon: 'bus',
+    accent: 'mint',
+    kind: { es: 'En curso', en: 'Building' },
+    role: { es: 'Proyecto propio', en: 'Own project' },
+    when: { es: '2026 — en curso', en: '2026 — in progress' },
+    blurb: {
+      es: 'Plataforma PWA multimodal de micromovilidad: logística, alquiler y venta de vehículos urbanos, con detección de casco corriendo en el navegador.',
+      en: 'PWA multimodal micromobility platform: logistics, rental and sale of urban vehicles, with helmet detection running in the browser.',
     },
   },
 ]
