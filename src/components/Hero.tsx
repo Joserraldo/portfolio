@@ -80,8 +80,8 @@ export default function Hero() {
             className="block aspect-[4/5] w-full border border-snow/60 object-cover object-top"
           />
           <motion.figcaption
-            initial={{ rotate: -2, scale: 0.9, opacity: 0 }}
-            animate={{ rotate: -2, scale: 1, opacity: 1 }}
+            initial={{ rotate: -2, scale: 0.9 }}
+            animate={{ rotate: -2, scale: 1 }}
             transition={{ delay: 0.7, duration: 0.35 }}
             className="absolute -bottom-5 left-3 right-3 flex items-center gap-2 bg-gold px-3 py-2 text-sm font-semibold text-panel shadow-lg"
           >
