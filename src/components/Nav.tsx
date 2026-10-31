@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Download, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 
 const LINKS = [
-  { href: '#about', key: 'about' },
-  { href: '#stack', key: 'stack' },
+  { href: '#agents', key: 'agents' },
+  { href: '#flagship', key: 'calaut' },
   { href: '#projects', key: 'projects' },
+  { href: '#stack', key: 'stack' },
   { href: '#timeline', key: 'timeline' },
   { href: '#beyond', key: 'beyond' },
   { href: '#contact', key: 'contact' },
@@ -28,12 +29,12 @@ export default function Nav() {
         </a>
 
         {/* desktop links */}
-        <ul className="hidden items-center gap-7 md:flex">
+        <ul className="hidden items-center gap-6 md:flex">
           {LINKS.map((l) => (
             <li key={l.key}>
               <a
                 href={`#${l.href.slice(1)}`}
-                className="font-mono text-xs uppercase tracking-widest text-fog transition-colors hover:text-gold"
+                className="text-sm font-medium text-fog transition-colors hover:text-gold"
               >
                 {t(copy.nav[l.key])}
               </a>
@@ -42,6 +43,13 @@ export default function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <a
+            href={`cv/CV_Jose_Tellez_Prada_${lang.toUpperCase()}.pdf`}
+            download
+            className="hidden items-center gap-1.5 rounded-md bg-gold px-3 py-1.5 text-xs font-semibold text-panel transition hover:bg-gold-soft lg:inline-flex"
+          >
+            <Download size={14} aria-hidden /> {t(copy.nav.cv)}
+          </a>
           {/* lang toggle */}
           <div className="flex overflow-hidden rounded-md border border-edge" role="group" aria-label="Language">
             {(['es', 'en'] as const).map((code) => (
@@ -52,7 +60,7 @@ export default function Nav() {
                 aria-pressed={lang === code}
                 className={`px-2.5 py-1 font-mono text-xs uppercase transition-colors ${
                   lang === code
-                    ? 'bg-gold text-void'
+                    ? 'bg-gold text-panel'
                     : 'text-fog hover:text-snow'
                 }`}
               >
@@ -88,7 +96,7 @@ export default function Nav() {
                 <a
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block px-6 py-3 font-mono text-xs uppercase tracking-widest text-fog hover:bg-panel hover:text-gold"
+                  className="block px-6 py-3 text-sm font-medium text-fog hover:bg-panel hover:text-gold"
                 >
                   {t(copy.nav[l.key])}
                 </a>

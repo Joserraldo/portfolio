@@ -1,6 +1,6 @@
 import { MotionConfig } from 'framer-motion'
-import About from './components/About'
 import BeyondCode from './components/BeyondCode'
+import Conecta from './components/Conecta'
 import Contact from './components/Contact'
 import Flagship from './components/Flagship'
 import Footer from './components/Footer'
@@ -17,10 +17,10 @@ export default function App() {
         <Nav />
         <main>
           <Hero />
-          <About />
-          <Skills />
+          <Conecta />
           <Flagship />
           <Projects />
+          <Skills />
           <Timeline />
           <BeyondCode />
           <Contact />

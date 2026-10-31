@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Cpu, Gamepad2, Medal, Sparkles } from 'lucide-react'
+import { Baby, Code2, Medal, Sparkles } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { ProjectAccent } from '../data/content'
 import { copy } from '../data/content'
@@ -9,16 +9,15 @@ import { fadeUp, stagger, viewport } from './motion'
 interface Identity {
   icon: LucideIcon
   accent: ProjectAccent
-  titleKey: 'tkdTitle' | 'disTitle' | 'hwTitle' | 'owTitle'
-  bodyKey: 'tkdBody' | 'disBody' | 'hwBody' | 'owBody'
-  strip?: boolean
+  titleKey: 'tkdTitle' | 'schoolTitle' | 'disTitle' | 'cpTitle'
+  bodyKey: 'tkdBody' | 'schoolBody' | 'disBody' | 'cpBody'
 }
 
 const IDENTITIES: Identity[] = [
-  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody', strip: true },
+  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody' },
+  { icon: Baby, accent: 'mint', titleKey: 'schoolTitle', bodyKey: 'schoolBody' },
   { icon: Sparkles, accent: 'amber', titleKey: 'disTitle', bodyKey: 'disBody' },
-  { icon: Cpu, accent: 'sky', titleKey: 'hwTitle', bodyKey: 'hwBody' },
-  { icon: Gamepad2, accent: 'coral', titleKey: 'owTitle', bodyKey: 'owBody' },
+  { icon: Code2, accent: 'sky', titleKey: 'cpTitle', bodyKey: 'cpBody' },
 ]
 
 /* accent → concrete classes (static, Tailwind-friendly) */
@@ -38,10 +37,7 @@ export default function BeyondCode() {
     <section id="beyond" className="scroll-mt-24 border-t border-edge/40 bg-panel/40">
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <motion.header variants={stagger()} initial="hidden" whileInView="show" viewport={viewport}>
-          <motion.p variants={fadeUp} className="font-mono text-xs uppercase tracking-[0.22em] text-coral">
-            06 — beyond
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl font-bold tracking-tight text-snow sm:text-4xl">
+          <motion.h2 variants={fadeUp} className="text-5xl font-bold text-snow sm:text-6xl">
             {t(copy.beyond.title)}
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-2 text-fog">
@@ -56,7 +52,7 @@ export default function BeyondCode() {
           viewport={viewport}
           className="mt-10 grid gap-5 sm:grid-cols-2"
         >
-          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey, strip }) => {
+          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey }) => {
             const s = STYLE[accent]
             return (
               <motion.article
@@ -70,18 +66,6 @@ export default function BeyondCode() {
                   <h3 className="text-base font-semibold text-snow">{t(copy.about.trivia[titleKey])}</h3>
                 </div>
                 <p className="mt-3 text-sm leading-relaxed text-fog">{t(copy.about.trivia[bodyKey])}</p>
-                {strip && (
-                  <>
-                    {/* black-belt strip with gold embroidery */}
-                    <div aria-hidden className="mt-5 flex items-center gap-2">
-                      <span className="h-2.5 flex-1 rounded-full bg-void ring-1 ring-edge" />
-                      <span className={`font-mono text-[10px] uppercase tracking-widest ${s.text}`}>
-                        {t(copy.beyond.beltNote)}
-                      </span>
-                      <span className="h-2.5 w-10 rounded-full bg-void ring-1 ring-edge" />
-                    </div>
-                  </>
-                )}
               </motion.article>
             )
           })}

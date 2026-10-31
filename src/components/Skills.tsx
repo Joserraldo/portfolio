@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import {
+  Bot,
   BrainCircuit,
   Cloud,
   Cpu,
@@ -15,6 +16,7 @@ import { useLang } from '../i18n/lang'
 import { fadeUp, stagger, viewport } from './motion'
 
 const ICONS: Record<string, LucideIcon> = {
+  agents: Bot,
   lang: Languages,
   backend: Server,
   frontend: Layers,
@@ -32,10 +34,7 @@ export default function Skills() {
     <section id="stack" className="scroll-mt-24 border-t border-edge/40">
       <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <motion.header variants={stagger()} initial="hidden" whileInView="show" viewport={viewport}>
-          <motion.p variants={fadeUp} className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-            02 — stack
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl font-bold tracking-tight text-snow sm:text-4xl">
+          <motion.h2 variants={fadeUp} className="text-5xl font-bold text-snow sm:text-6xl">
             {t(copy.skills.title)}
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-2 text-fog">
@@ -48,7 +47,7 @@ export default function Skills() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4"
+          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
         >
           {skillGroups.map((g) => {
             const Icon = ICONS[g.icon]

@@ -23,10 +23,7 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-24 border-t border-edge/40">
       <div className="mx-auto max-w-3xl px-4 py-24 text-center sm:px-6">
         <motion.header variants={stagger()} initial="hidden" whileInView="show" viewport={viewport}>
-          <motion.p variants={fadeUp} className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-            07 — contact
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl font-bold tracking-tight text-snow sm:text-4xl">
+          <motion.h2 variants={fadeUp} className="text-5xl font-bold text-snow sm:text-6xl">
             {t(copy.contact.title)}
           </motion.h2>
           <motion.p variants={fadeUp} className="mx-auto mt-3 max-w-md text-fog">

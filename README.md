@@ -1,6 +1,6 @@
 # Portfolio — José Alejandro Téllez Prada
 
-Portafolio personal: **React 19 + Vite + Tailwind v4 + Framer Motion + TypeScript**, bilingüe (ES/EN), one-page con secciones de buque insignia (Calaut.pro), proyectos, stack, trayectoria y contacto.
+Portafolio personal: **React 19 + Vite + Tailwind v4 + Framer Motion + TypeScript**, bilingüe (ES/EN), one-page con CDE Conecta (ganador del UNAB Venture Challenge 2026), Calaut.pro, proyectos por categoría, stack, trayectoria y contacto.
 
 🔗 **En vivo:** https://joserraldo.github.io
 
@@ -31,7 +31,7 @@ npm run lint     # oxlint
 
 ```
 src/
-├─ components/     # Hero, Flagship, Projects, Skills, Timeline, BeyondCode, Contact, Nav, Footer
+├─ components/     # Hero, Conecta, Flagship, Projects, Skills, Timeline, BeyondCode, Contact, Nav, Footer
 │  ├─ accents.ts   # paleta por acento (gold, mint, coral, sky, violet, amber)
 │  └─ motion.ts    # variantes compartidas de Framer Motion
 ├─ data/content.ts # ← TODO el contenido: perfil, copy ES/EN, stack, proyectos, hitos
@@ -40,6 +40,17 @@ src/
 ```
 
 **Para editar el sitio se toca `src/data/content.ts`**: ahí viven los proyectos, la trayectoria y los textos en ambos idiomas. El copy está tipado con paridad ES/EN forzada por construcción.
+
+## Diseño (v4)
+
+- Plano azul con marcador amarillo: la página es un plano porque el trabajo empieza planeando. Títulos en Big Shoulders Display, texto en Instrument Sans y datos en IBM Plex Mono.
+- La pieza principal es el enrutador interactivo de `Conecta.tsx`: eliges una pregunta y se ve qué agente responde.
+- Los proyectos van en pestañas por categoría (`categories` en `content.ts`) para que la página no sea eterna. Los repos privados no llevan enlace al código.
+- Las capturas de CDE Conecta salen de `docs/pitch/capturas` de su repo; usan datos de prueba.
+
+## CV
+
+`public/cv/` tiene los PDF públicos en inglés y español, sin teléfono. El generador y las versiones con teléfono viven fuera del repo, junto a los CV originales (`generar_cv.py`), para no publicar el número.
 
 ## Deploy
 
@@ -50,7 +61,7 @@ Al hacer push a `main`, el workflow `.github/workflows/deploy.yml` corre `npm ci
 1. Crear un **fine-grained PAT** en GitHub → Settings → Developer settings → Fine-grained tokens, con acceso al repo `Joserraldo/Joserraldo.github.io` y permiso **Contents: Read and write**.
 2. Guardarlo en este repo como secreto de Actions con el nombre **`PAGES_TOKEN`** (Settings → Secrets and variables → Actions).
 
-Sin el secreto, el workflow compila pero avisa y no publica. Deploy manual alternativo: `npm run build` y subir el contenido de `dist/` al repo del sitio.
+Sin el secreto, el workflow compila pero avisa y no publica. Deploy manual alternativo: compilar con `npx vite build --outDir <carpeta-temporal>` (porque `dist/` es un clon del repo del sitio y `vite build` lo vaciaría), copiar el resultado a `dist/` sin tocar `dist/.git` y hacer push desde ahí.
 
 ## Contacto
 

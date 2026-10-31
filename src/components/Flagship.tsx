@@ -25,12 +25,12 @@ export default function Flagship() {
           />
 
           <motion.p variants={fadeUp} className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-gold">
-            <Sparkles size={13} aria-hidden /> 03 — {t(copy.flagship.kicker)}
+            <Sparkles size={13} aria-hidden /> {t(copy.flagship.kicker)}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-4 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-snow sm:text-4xl">
+              <h2 className="text-5xl font-bold text-snow sm:text-6xl">
                 {t(copy.flagship.title)}
                 <span className="text-gold">.</span>
               </h2>

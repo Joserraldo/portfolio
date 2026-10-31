@@ -1,37 +1,43 @@
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
   Brain,
-  CalendarDays,
+  Briefcase,
+  Bus,
   ClipboardList,
+  Code2,
+  Dog,
   Download,
   Egg,
+  ExternalLink,
   Factory,
   Gamepad2,
   GraduationCap,
+  Hash,
   HeartPulse,
+  Lock,
+  Music,
   Radio,
+  Rocket,
   Shirt,
   Smartphone,
-  Bus,
-  Code2,
-  ExternalLink,
+  Sparkles,
+  Stethoscope,
+  Truck,
   Wallet,
   Wrench,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import type { MouseEvent, ReactNode } from 'react'
-import { projects, copy } from '../data/content'
-import type { Project } from '../data/content'
+import { useState } from 'react'
+import { categories, copy, projects } from '../data/content'
+import type { Project, ProjectCategory } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { ACCENT } from './accents'
 import { fadeUp, stagger, viewport } from './motion'
 
 const ICONS: Record<Project['icon'], LucideIcon> = {
-  calendar: CalendarDays,
   bus: Bus,
   factory: Factory,
   graduation: GraduationCap,
-  brain: Brain,
   clipboard: ClipboardList,
   download: Download,
   wallet: Wallet,
@@ -42,41 +48,15 @@ const ICONS: Record<Project['icon'], LucideIcon> = {
   wrench: Wrench,
   shirt: Shirt,
   egg: Egg,
+  tooth: Stethoscope,
+  truck: Truck,
+  sparkles: Sparkles,
+  music: Music,
+  dog: Dog,
+  hash: Hash,
 }
 
-function Tilt({ children, className }: { children: ReactNode; className?: string }) {
-  const reduce = useReducedMotion()
-  const mx = useMotionValue(0.5)
-  const my = useMotionValue(0.5)
-  const spring = { stiffness: 170, damping: 16 }
-  const rotateX = useSpring(useTransform(my, [0, 1], [6, -6]), spring)
-  const rotateY = useSpring(useTransform(mx, [0, 1], [-8, 8]), spring)
-
-  function onMove(e: MouseEvent<HTMLElement>) {
-    if (reduce) return
-    const r = e.currentTarget.getBoundingClientRect()
-    mx.set((e.clientX - r.left) / r.width)
-    my.set((e.clientY - r.top) / r.height)
-  }
-  function onLeave() {
-    mx.set(0.5)
-    my.set(0.5)
-  }
-
-  return (
-    <div style={{ perspective: 900 }} className={className}>
-      <motion.article
-        variants={fadeUp}
-        onMouseMove={onMove}
-        onMouseLeave={onLeave}
-        style={reduce ? undefined : { rotateX, rotateY, transformStyle: 'preserve-3d' }}
-        className="group h-full rounded-xl border border-edge bg-panel/60 p-6 transition-[border-color,box-shadow] duration-300"
-      >
-        {children}
-      </motion.article>
-    </div>
-  )
-}
+const CAT_ICONS = { briefcase: Briefcase, rocket: Rocket, brain: Brain, radio: Radio, wrench: Wrench }
 
 function Card({ p }: { p: Project }) {
   const { t } = useLang()
@@ -84,92 +64,95 @@ function Card({ p }: { p: Project }) {
   const a = ACCENT[p.accent]
 
   return (
-    <Tilt className={a.glow}>
-      <div className="flex items-start justify-between gap-3">
-        <span
-          className={`inline-flex h-10 w-10 items-center justify-center rounded-lg border ${a.chip} bg-void/60`}
-          aria-hidden
-        >
-          <Icon size={18} />
-        </span>
-        <span className={`rounded-full border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider ${a.chip}`}>
-          {t(p.kind)}
-        </span>
-      </div>
-
-      <h3 className="mt-4 text-base font-semibold text-snow">{p.name}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-fog">{t(p.blurb)}</p>
-
-      <p className="mt-3 font-mono text-[11px] text-ink-faint">
-        <span className={a.text}>{t(p.role)}</span> · {t(p.when)}
-      </p>
-
-      <div className="mt-5 flex items-center justify-between gap-3 border-t border-edge/50 pt-4">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-fog">{p.tech}</span>
-        <span className="flex items-center gap-3">
-          {p.code && (
-            <a
-              href={p.code}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-mono text-xs text-fog transition-colors hover:text-snow"
-            >
-              <Code2 size={13} aria-hidden />
-              {t(copy.projects.viewCode)}
+    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-edge bg-panel transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-snow/60">
+      {p.shot ? (
+        <img src={p.shot} alt="" loading="lazy" className="block aspect-[16/10] w-full border-b border-edge object-cover object-top" />
+      ) : (
+        <div className={`flex aspect-[16/10] w-full items-center justify-center border-b border-edge bg-void/50 ${a.text}`}>
+          <Icon size={52} strokeWidth={1.25} aria-hidden className="transition-transform duration-300 group-hover:scale-110" />
+        </div>
+      )}
+      <div className="flex flex-1 flex-col p-4">
+        <p className={`flex items-center gap-1.5 text-xs font-semibold ${a.text}`}>
+          <Icon size={14} aria-hidden /> {t(p.kind)}
+        </p>
+        <h3 className="mt-1.5 text-lg font-semibold text-snow">{p.name}</h3>
+        <p className="mt-1.5 flex-1 text-sm leading-relaxed text-fog">{t(p.blurb)}</p>
+        <p className="mt-3 font-mono text-[11px] text-ink-faint">{p.tech}</p>
+        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-edge pt-3 text-sm">
+          {p.url && (
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-semibold text-gold hover:text-gold-soft">
+              <ExternalLink size={14} aria-hidden /> {t(copy.projects.visit)}
             </a>
           )}
-          {p.url ? (
-            <a
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-1.5 font-mono text-xs transition-colors hover:text-snow ${a.text}`}
-            >
-              <ExternalLink size={13} aria-hidden />
-              {t(copy.projects.visit)}
+          {p.code && (
+            <a href={p.code} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-fog hover:text-snow">
+              <Code2 size={14} aria-hidden /> {t(copy.projects.viewCode)}
             </a>
-          ) : (
-            <span className="inline-flex items-center gap-1.5 font-mono text-xs text-ink-faint">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sky" aria-hidden />
-              {t(copy.projects.building)}
+          )}
+          {p.building && (
+            <span className="inline-flex items-center gap-1.5 text-fog">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-mint" aria-hidden /> {t(copy.projects.building)}
             </span>
           )}
-        </span>
+          {p.isPrivate && (
+            <span className="inline-flex items-center gap-1.5 text-ink-faint">
+              <Lock size={13} aria-hidden /> {t(copy.projects.privateCode)}
+            </span>
+          )}
+        </div>
       </div>
-    </Tilt>
+    </article>
   )
 }
 
 export default function Projects() {
   const { t } = useLang()
-  const grid = projects.filter((p) => !p.featured)
+  const [cat, setCat] = useState<ProjectCategory>('custom')
+  const current = categories.find((c) => c.id === cat)!
+  const list = projects.filter((p) => p.cat === cat)
 
   return (
-    <section id="projects" className="scroll-mt-24 border-t border-edge/40 bg-panel/40">
-      <div className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section id="projects" className="scroll-mt-20 border-t border-edge bg-panel/50">
+      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <motion.header variants={stagger()} initial="hidden" whileInView="show" viewport={viewport}>
-          <motion.p variants={fadeUp} className="font-mono text-xs uppercase tracking-[0.22em] text-gold">
-            04 — projects
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="mt-3 text-3xl font-bold tracking-tight text-snow sm:text-4xl">
+          <motion.h2 variants={fadeUp} className="text-5xl font-bold text-snow sm:text-6xl">
             {t(copy.projects.title)}
           </motion.h2>
           <motion.p variants={fadeUp} className="mt-2 text-fog">
-            {t(copy.projects.lead)} <span className="font-mono text-mint">[{grid.length}]</span>
+            {t(copy.projects.lead)}
           </motion.p>
         </motion.header>
 
-        <motion.div
-          variants={stagger(0.05)}
-          initial="hidden"
-          whileInView="show"
-          viewport={viewport}
-          className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-3"
-        >
-          {grid.map((p) => (
+        <div role="tablist" aria-label={t(copy.projects.title)} className="mt-8 flex flex-wrap gap-2">
+          {categories.map((c) => {
+            const Icon = CAT_ICONS[c.icon]
+            const on = c.id === cat
+            const n = projects.filter((p) => p.cat === c.id).length
+            return (
+              <button
+                key={c.id}
+                type="button"
+                role="tab"
+                aria-selected={on}
+                onClick={() => setCat(c.id)}
+                className={`inline-flex items-center gap-2 rounded-lg border px-3.5 py-2 text-sm font-semibold transition-colors ${
+                  on ? 'border-gold bg-gold text-panel' : 'border-edge bg-panel/70 text-fog hover:border-snow/60 hover:text-snow'
+                }`}
+              >
+                <Icon size={16} aria-hidden /> {t(c.label)} <span className="font-mono text-xs opacity-75">{n}</span>
+              </button>
+            )
+          })}
+        </div>
+
+        <p className="mt-4 text-fog">{t(current.blurb)}</p>
+
+        <div key={cat} role="tabpanel" className="rise mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {list.map((p) => (
             <Card key={p.name} p={p} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
