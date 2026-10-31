@@ -1,14 +1,10 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   BarChart3,
-  Bot,
-  ClipboardList,
   ExternalLink,
-  GitPullRequestArrow,
   Lock,
   PenLine,
   Sprout,
-  Split,
   Trophy,
   Upload,
   Workflow,
@@ -19,13 +15,6 @@ import { conecta, copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { ACCENT } from './accents'
 import { fadeUp, stagger, viewport } from './motion'
-
-const STEP_ICONS: Record<string, LucideIcon> = {
-  plan: ClipboardList,
-  split: Split,
-  build: Bot,
-  review: GitPullRequestArrow,
-}
 
 const AGENT_ICONS: Record<string, LucideIcon> = {
   upload: Upload,
@@ -194,33 +183,6 @@ export default function Conecta() {
             ))}
           </motion.ul>
         </motion.header>
-
-        {/* cómo trabajo: una secuencia real, por eso va numerada */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-snow">{t(copy.conecta.workTitle)}</h3>
-          <p className="mt-1 max-w-2xl text-fog">{t(copy.conecta.workLead)}</p>
-          <motion.ol
-            variants={stagger(0.05)}
-            initial="hidden"
-            whileInView="show"
-            viewport={viewport}
-            className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {conecta.steps.map((s, i) => {
-              const Icon = STEP_ICONS[s.icon]
-              return (
-                <motion.li key={s.icon} variants={fadeUp} className="rounded-lg border border-edge bg-panel/70 p-4">
-                  <div className="flex items-center justify-between text-gold">
-                    <Icon size={22} aria-hidden />
-                    <span className="font-mono text-xs text-ink-faint">{i + 1}/4</span>
-                  </div>
-                  <p className="mt-3 font-semibold text-snow">{t(s.title)}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-fog">{t(s.body)}</p>
-                </motion.li>
-              )
-            })}
-          </motion.ol>
-        </div>
 
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-snow">{t(copy.conecta.routerTitle)}</h3>

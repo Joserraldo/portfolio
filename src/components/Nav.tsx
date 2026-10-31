@@ -5,12 +5,12 @@ import { copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 
 const LINKS = [
+  { href: '#ai', key: 'ai' },
   { href: '#agents', key: 'agents' },
+  { href: '#transit', key: 'transit' },
   { href: '#flagship', key: 'calaut' },
   { href: '#projects', key: 'projects' },
-  { href: '#stack', key: 'stack' },
   { href: '#timeline', key: 'timeline' },
-  { href: '#beyond', key: 'beyond' },
   { href: '#contact', key: 'contact' },
 ] as const
 
@@ -29,7 +29,7 @@ export default function Nav() {
         </a>
 
         {/* desktop links */}
-        <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-5 lg:flex">
           {LINKS.map((l) => (
             <li key={l.key}>
               <a
@@ -46,7 +46,7 @@ export default function Nav() {
           <a
             href={`cv/CV_Jose_Tellez_Prada_${lang.toUpperCase()}.pdf`}
             download
-            className="hidden items-center gap-1.5 rounded-md bg-gold px-3 py-1.5 text-xs font-semibold text-panel transition hover:bg-gold-soft lg:inline-flex"
+            className="hidden items-center gap-1.5 rounded-md bg-gold px-3 py-1.5 text-xs font-semibold text-panel transition hover:bg-gold-soft xl:inline-flex"
           >
             <Download size={14} aria-hidden /> {t(copy.nav.cv)}
           </a>
@@ -72,7 +72,7 @@ export default function Nav() {
           {/* mobile toggle */}
           <button
             type="button"
-            className="text-fog hover:text-snow md:hidden"
+            className="text-fog hover:text-snow lg:hidden"
             aria-expanded={open}
             aria-label={t(open ? copy.nav.close : copy.nav.menu)}
             onClick={() => setOpen((v) => !v)}
@@ -89,7 +89,7 @@ export default function Nav() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-edge/60 md:hidden"
+            className="overflow-hidden border-t border-edge/60 lg:hidden"
           >
             {LINKS.map((l) => (
               <li key={l.key}>

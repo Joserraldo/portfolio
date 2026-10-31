@@ -3,8 +3,8 @@ import type { Variants } from 'framer-motion'
 export const EASE: [number, number, number, number] = [0.21, 0.47, 0.32, 0.98]
 
 export const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 26 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+  hidden: { y: 18 }, // sin fundido: el contenido se lee aunque la animación no corra
+  show: { y: 0, transition: { duration: 0.45, ease: EASE } },
 }
 
 export const fadeIn: Variants = {

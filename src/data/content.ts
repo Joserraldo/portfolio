@@ -16,6 +16,13 @@ import cdeFicha from '../assets/cde-ficha360.webp'
 import cdePortal from '../assets/cde-portal.webp'
 import cdeInicio from '../assets/cde-inicio-admin.webp'
 import cdeOrgs from '../assets/cde-organizaciones.webp'
+import btMapa from '../assets/bt-panel-admin-mapa.webp'
+import btEmpresa from '../assets/bt-panel-empresa-escritorio.webp'
+import btEditor from '../assets/bt-panel-admin-editor-ruta.webp'
+import btBus from '../assets/bt-app-siguiendo-bus.webp'
+import btWallet from '../assets/bt-app-wallet.webp'
+import btConductor from '../assets/bt-app-conductor.webp'
+import btInicio from '../assets/bt-app-inicio.webp'
 import agendaShot from '../assets/calaut-agenda.webp'
 import pilotoShot from '../assets/calaut-piloto.webp'
 import omnicanalShot from '../assets/calaut-omnicanal.webp'
@@ -43,7 +50,9 @@ export const PROFILE = {
 
 export const copy = {
   nav: {
+    ai: { es: 'IA', en: 'AI' },
     agents: { es: 'CDE Conecta', en: 'CDE Conecta' },
+    transit: { es: 'BUCARATRANSIT', en: 'BUCARATRANSIT' },
     calaut: { es: 'Calaut', en: 'Calaut' },
     projects: { es: 'Proyectos', en: 'Projects' },
     stack: { es: 'Stack', en: 'Stack' },
@@ -60,8 +69,8 @@ export const copy = {
       en: 'Full-stack developer · AI agent orchestration',
     },
     blurb: {
-      es: 'Planeo la arquitectura, reparto el trabajo entre agentes de IA y reviso lo que entregan. Así construyo productos completos: un SaaS propio, software a medida y un CRM con agentes que ganó el UNAB Venture Challenge.',
-      en: 'I plan the architecture, split the work across AI agents and review what they ship. That is how I build complete products: my own SaaS, custom software and an agent-powered CRM that won the UNAB Venture Challenge.',
+      es: 'Planeo la arquitectura, reparto el trabajo entre agentes de IA y reviso lo que entregan. Así construyo productos completos: un SaaS propio, una plataforma de movilidad para Bucaramanga y un CRM con agentes que ganó el UNAB Venture Challenge.',
+      en: 'I plan the architecture, split the work across AI agents and review what they ship. That is how I build complete products: my own SaaS, a mobility platform for Bucaramanga and an agent-powered CRM that won the UNAB Venture Challenge.',
     },
     ctaProjects: { es: 'Ver proyectos', en: 'See projects' },
     callout: { es: 'Ganador · UNAB Venture Challenge 2026', en: 'Winner · UNAB Venture Challenge 2026' },
@@ -81,11 +90,6 @@ export const copy = {
     },
     cta: { es: 'Ver el producto', en: 'See the product' },
     privateCode: { es: 'Código privado', en: 'Private source' },
-    workTitle: { es: 'Cómo trabajo con agentes', en: 'How I work with agents' },
-    workLead: {
-      es: 'Ahora paso más tiempo planeando que tecleando. La calidad sale de cómo se reparte y se revisa el trabajo.',
-      en: 'I now spend more time planning than typing. Quality comes from how the work is split and reviewed.',
-    },
     routerTitle: { es: 'Así decide el agente', en: 'How the agent decides' },
     routerLead: {
       es: 'Elige una pregunta. Un enrutador escoge al especialista y el código hace el trabajo: el modelo nunca toca los datos.',
@@ -111,6 +115,32 @@ export const copy = {
       es: 'Más que el premio, este proyecto me abrió conexiones muy valiosas para mi futuro.',
       en: 'Beyond the prize, this project opened connections that matter for my future.',
     },
+  },
+  ai: {
+    title: { es: 'IA y orquestación', en: 'AI & orchestration' },
+    lead: {
+      es: 'Ahora paso más tiempo planeando que tecleando. La calidad sale de cómo se reparte y se revisa el trabajo.',
+      en: 'I now spend more time planning than typing. Quality comes from how the work is split and reviewed.',
+    },
+    processTitle: { es: 'Cómo trabajo con agentes', en: 'How I work with agents' },
+    toolsTitle: { es: 'Qué manejo', en: 'What I work with' },
+  },
+  transit: {
+    kicker: { es: 'La solución de movilidad para Bucaramanga', en: 'A mobility solution for Bucaramanga' },
+    title: { es: 'BUCARATRANSIT', en: 'BUCARATRANSIT' },
+    lead: {
+      es: 'Una sola app para moverse en la ciudad: buses en vivo, rutas, billetera prepago y pago con QR. Cada transportadora opera por separado en la misma plataforma, y el celular del conductor se vuelve la terminal de cobro.',
+      en: 'One app to get around the city: live buses, routes, a prepaid wallet and QR fares. Each transit company runs separately on the same platform, and the driver’s phone becomes the payment terminal.',
+    },
+    role: {
+      es: 'Mi parte: diseñé el paso de rastreador universitario a plataforma multi-tenant, y trabajé en la billetera, el QR dinámico, el modo conductor y la marca. Lo construimos entre 3.',
+      en: 'My part: I designed the move from campus tracker to multi-tenant platform, and worked on the wallet, dynamic QR, driver mode and brand. Built by a team of 3.',
+    },
+    cta: { es: 'Abrir la plataforma', en: 'Open the platform' },
+    code: { es: 'Ver código', en: 'View code' },
+    appTitle: { es: 'La app', en: 'The app' },
+    panelTitle: { es: 'Los paneles', en: 'The panels' },
+    stack: 'Kotlin Multiplatform · Laravel 12 · Filament · MapLibre · Sanctum',
   },
   about: {
     trivia: {
@@ -215,7 +245,7 @@ export const skillGroups: SkillGroup[] = [
   {
     icon: 'agents',
     title: { es: 'Agentes y automatización', en: 'Agents & automation' },
-    items: ['Claude Code', 'Multi-agent workflows', 'n8n', 'LLM routing', 'Structured outputs', 'Token optimization'],
+    items: ['Claude Code', 'Hermes Agent', 'Subagents', 'Skills', 'n8n', 'LLM routing', 'CDM', 'Token optimization'],
   },
   {
     icon: 'lang',
@@ -388,19 +418,6 @@ export const projects: Project[] = [
     blurb: {
       es: 'Tienda de bordados a mano: blusas, bolsos y fundas con carrito y pedido por WhatsApp, sin backend.',
       en: 'Handmade embroidery store: blouses, bags and covers with a cart and WhatsApp ordering, no backend.',
-    },
-  },
-  {
-    name: 'BUCARATRANSIT',
-    cat: 'product',
-    tech: 'Kotlin Multiplatform · Laravel',
-    icon: 'bus',
-    accent: 'sky',
-    building: true,
-    kind: { es: 'App de movilidad', en: 'Mobility app' },
-    blurb: {
-      es: 'App de transporte white-label: cada organización descarga su marca y su logo desde la API. Rutas y horarios del campus.',
-      en: 'White-label transit app: each organization loads its brand and logo from the API. Campus routes and schedules.',
     },
   },
   {
@@ -721,6 +738,17 @@ export const milestones: Milestone[] = [
     when: { es: 'oct 2026', en: 'Oct 2026' },
   },
   {
+    icon: 'bus',
+    accent: 'sky',
+    title: { es: 'BUCARATRANSIT', en: 'BUCARATRANSIT' },
+    org: { es: 'Movilidad para Bucaramanga', en: 'Mobility for Bucaramanga' },
+    body: {
+      es: 'De rastreador de buses universitario a plataforma multi-tenant con billetera y pago con QR.',
+      en: 'From campus bus tracker to a multi-tenant platform with wallet and QR fares.',
+    },
+    when: { es: '2026 — hoy', en: '2026 — now' },
+  },
+  {
     icon: 'sparkles',
     accent: 'amber',
     title: { es: 'Intercambio J-1, Atracciones y Operaciones', en: 'J-1 Exchange, Attractions & Operations' },
@@ -787,28 +815,6 @@ export const conecta = {
     { value: '50%', label: { es: 'de beca de matrícula', en: 'tuition scholarship' } },
     { value: '4', label: { es: 'agentes especialistas', en: 'specialist agents' } },
   ],
-  steps: [
-    {
-      icon: 'plan',
-      title: { es: 'Planeo', en: 'Plan' },
-      body: { es: 'Defino la arquitectura, las reglas y qué significa terminado.', en: 'I set the architecture, the rules and what done means.' },
-    },
-    {
-      icon: 'split',
-      title: { es: 'Reparto', en: 'Split' },
-      body: { es: 'Divido el trabajo en tareas pequeñas, con dueño y carpeta propia.', en: 'I break the work into small tasks, each with an owner and a folder.' },
-    },
-    {
-      icon: 'build',
-      title: { es: 'Los agentes construyen', en: 'Agents build' },
-      body: { es: 'Cada agente hace su parte, como en una casa de desarrollo.', en: 'Each agent does its part, like a small dev studio.' },
-    },
-    {
-      icon: 'review',
-      title: { es: 'Reviso', en: 'Review' },
-      body: { es: 'Tipos, pruebas y CI antes de integrar. Nada entra sin validar.', en: 'Types, tests and CI before merging. Nothing lands unchecked.' },
-    },
-  ],
   agents: [
     {
       id: 'migra',
@@ -869,5 +875,89 @@ export const conecta = {
     { name: 'Jaime Vega', role: { es: 'Base de datos, perfiles y empresas', en: 'Database, profiles and companies' } },
     { name: 'Santiago Cabeza', role: { es: 'Migra, Azure y CI/CD', en: 'Migra, Azure and CI/CD' } },
     { name: 'Daniel Villamizar', role: { es: 'Citas, eventos, proyectos y soporte', en: 'Appointments, events, projects and support' } },
+  ],
+} as const
+
+/* ────────────────────────── IA y orquestación ────────────────────── */
+
+export const orchestration = {
+  steps: [
+    {
+      icon: 'plan',
+      title: { es: 'Planeo', en: 'Plan' },
+      body: { es: 'Defino la arquitectura, las reglas y qué significa terminado.', en: 'I set the architecture, the rules and what done means.' },
+    },
+    {
+      icon: 'split',
+      title: { es: 'Reparto', en: 'Split' },
+      body: { es: 'Divido el trabajo en tareas pequeñas, con dueño y carpeta propia.', en: 'I break the work into small tasks, each with an owner and a folder.' },
+    },
+    {
+      icon: 'build',
+      title: { es: 'Los agentes construyen', en: 'Agents build' },
+      body: { es: 'Cada agente hace su parte, como en una casa de desarrollo.', en: 'Each agent does its part, like a small dev studio.' },
+    },
+    {
+      icon: 'review',
+      title: { es: 'Reviso', en: 'Review' },
+      body: { es: 'Tipos, pruebas y CI antes de integrar. Nada entra sin validar.', en: 'Types, tests and CI before merging. Nothing lands unchecked.' },
+    },
+  ],
+  tools: [
+    {
+      icon: 'bot',
+      title: { es: 'Agentes', en: 'Agents' },
+      body: { es: 'Desarrollo a diario con Claude Code y Hermes Agent, con subagentes para trabajo en paralelo. Automatizo flujos con n8n.', en: 'I build daily with Claude Code and Hermes Agent, using subagents for parallel work. I automate flows with n8n.' },
+    },
+    {
+      icon: 'skills',
+      title: { es: 'Skills', en: 'Skills' },
+      body: { es: 'Una biblioteca curada de más de 130 skills reutilizables para despliegues, QA, auditorías y documentos. Lo que funciona una vez queda como procedimiento.', en: 'A curated library of 130+ reusable skills for deploys, QA, audits and documents. What works once becomes a procedure.' },
+    },
+    {
+      icon: 'models',
+      title: { es: 'Modelos y proveedores', en: 'Models & providers' },
+      body: { es: 'Pruebo proveedores con peticiones reales. En CDE Conecta, Qwen respondió en unos 2 s y DeepSeek en 4 a 8 s con errores intermitentes.', en: 'I test providers with real requests. On CDE Conecta, Qwen answered in about 2 s and DeepSeek in 4 to 8 s with intermittent errors.' },
+    },
+    {
+      icon: 'tokens',
+      title: { es: 'Tokens y CDM', en: 'Tokens & CDM' },
+      body: { es: 'Cada tarea va al modelo más barato capaz. Con salidas CDM (JSON schema estricto) el modelo responde poco, y ese poco se valida.', en: 'Each job goes to the cheapest capable model. With CDM outputs (strict JSON schema) the model says little, and that little gets validated.' },
+    },
+    {
+      icon: 'train',
+      title: { es: 'Entrenamiento de ML', en: 'ML training' },
+      body: { es: 'Entreno y despliego modelos: YOLOv8n en Colab servido con FastAPI en EC2, MobileNetV2 para puntos clave y CNN para MNIST.', en: 'I train and deploy models: YOLOv8n on Colab served with FastAPI on EC2, MobileNetV2 for keypoints and a CNN for MNIST.' },
+    },
+  ],
+} as const
+
+/* ────────────────────────── BUCARATRANSIT ─────────────────────────── */
+
+export const transit = {
+  url: 'https://bucaratransit.duckdns.org',
+  code: 'https://github.com/JaimeMrF/bus_unab',
+  facts: [
+    { value: '60 s', label: { es: 'de vida por QR, de un solo uso', en: 'QR lifetime, single use' } },
+    { value: '88', label: { es: 'pruebas automatizadas', en: 'automated tests' } },
+    { value: '2', label: { es: 'plataformas: Android e iOS', en: 'platforms: Android and iOS' } },
+    { value: '0', label: { es: 'hardware extra en el bus', en: 'extra hardware on the bus' } },
+  ],
+  features: [
+    { icon: 'map', title: { es: 'Buses en vivo', en: 'Live buses' }, body: { es: 'Mapa, rutas, paradas y tiempo estimado de llegada.', en: 'Map, routes, stops and estimated arrival.' } },
+    { icon: 'wallet', title: { es: 'Billetera prepago', en: 'Prepaid wallet' }, body: { es: 'Libro contable de doble entrada: cada movimiento queda registrado y no se reescribe.', en: 'Double-entry ledger: each movement is recorded and never rewritten.' } },
+    { icon: 'qr', title: { es: 'Pago con QR', en: 'QR fares' }, body: { es: 'Código firmado con HMAC-SHA256. Se usa una vez y vence en 60 segundos.', en: 'Code signed with HMAC-SHA256. It works once and expires in 60 seconds.' } },
+    { icon: 'building', title: { es: 'Multi-empresa', en: 'Multi-company' }, body: { es: 'Cada transportadora tiene su panel y solo ve lo suyo.', en: 'Each transit company has its own panel and sees only its data.' } },
+  ],
+  app: [
+    { src: btInicio, caption: { es: 'Inicio', en: 'Home' } },
+    { src: btBus, caption: { es: 'Siguiendo un bus', en: 'Following a bus' } },
+    { src: btWallet, caption: { es: 'Billetera', en: 'Wallet' } },
+    { src: btConductor, caption: { es: 'Modo conductor', en: 'Driver mode' } },
+  ],
+  panels: [
+    { src: btMapa, caption: { es: 'Mapa en vivo de la operación', en: 'Live operations map' } },
+    { src: btEditor, caption: { es: 'Editor de rutas por calles', en: 'Street-based route editor' } },
+    { src: btEmpresa, caption: { es: 'Métricas de cada transportadora', en: 'Metrics for each transit company' } },
   ],
 } as const

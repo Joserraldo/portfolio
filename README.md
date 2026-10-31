@@ -1,6 +1,6 @@
 # Portfolio — José Alejandro Téllez Prada
 
-Portafolio personal: **React 19 + Vite + Tailwind v4 + Framer Motion + TypeScript**, bilingüe (ES/EN), one-page con CDE Conecta (ganador del UNAB Venture Challenge 2026), Calaut.pro, proyectos por categoría, stack, trayectoria y contacto.
+Portafolio personal: **React 19 + Vite + Tailwind v4 + Framer Motion + TypeScript**, bilingüe (ES/EN), one-page con IA y orquestación, CDE Conecta (ganador del UNAB Venture Challenge 2026), BUCARATRANSIT, Calaut.pro, proyectos por categoría, stack, trayectoria y contacto.
 
 🔗 **En vivo:** https://joserraldo.github.io
 
@@ -31,7 +31,7 @@ npm run lint     # oxlint
 
 ```
 src/
-├─ components/     # Hero, Conecta, Flagship, Projects, Skills, Timeline, BeyondCode, Contact, Nav, Footer
+├─ components/     # Hero, Orchestration, Conecta, Bucaratransit, Flagship, Projects, Skills, Timeline, BeyondCode, Contact, Nav, Footer
 │  ├─ accents.ts   # paleta por acento (gold, mint, coral, sky, violet, amber)
 │  └─ motion.ts    # variantes compartidas de Framer Motion
 ├─ data/content.ts # ← TODO el contenido: perfil, copy ES/EN, stack, proyectos, hitos
