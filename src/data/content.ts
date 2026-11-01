@@ -9,6 +9,7 @@ import mnistShot from '../assets/p-mnist.webp'
 import manoShot from '../assets/p-mano.webp'
 import iotShot from '../assets/p-iot.webp'
 import huevosShot from '../assets/p-huevos.webp'
+import jeepShot from '../assets/modelado-jeep.webp'
 import perroShot from '../assets/p-perro.webp'
 import urbanShot from '../assets/p-urban.webp'
 import cdeLanding from '../assets/cde-landing.webp'
@@ -169,9 +170,11 @@ export const copy = {
       },
       cpTitle: { es: 'Programación competitiva', en: 'Competitive programming' },
       cpBody: {
-        es: 'Hago parte de la selección de la UNAB y compito en ACIS/REDIS. También armo PCs por gusto.',
-        en: 'I am on UNAB’s team and compete in ACIS/REDIS contests. I also build PCs for fun.',
+        es: 'Hago parte de la selección de la UNAB y compito en la Maratón Nacional de Programación ACIS/REDIS (2025 y 2026). También armo PCs por gusto.',
+        en: 'I am on UNAB’s team and compete in the ACIS/REDIS National Programming Marathon (2025 and 2026). I also build PCs for fun.',
       },
+      cpAlt25: { es: 'José con su equipo en la Maratón de Programación 2025', en: 'José with his team at the 2025 Programming Marathon' },
+      cpAlt26: { es: 'José con su equipo en la Maratón de Programación 2026', en: 'José with his team at the 2026 Programming Marathon' },
     },
   },
   skills: {
@@ -580,8 +583,21 @@ export const projects: Project[] = [
     accent: 'violet',
     kind: { es: 'Juego en equipo', en: 'Team game' },
     blurb: {
-      es: 'Juego en Unity con shaders propios, hecho en equipo para la clase de multimedios.',
-      en: 'Unity game with custom shaders, built as a team for a multimedia course.',
+      es: 'Juego en Unity con shaders propios, hecho en equipo para la clase de multimedios. Detrás de lo que se ve hay modelado 3D, texturas, iluminación y programación en C#.',
+      en: 'Unity game with custom shaders, built as a team for a multimedia course. Behind what you see: 3D modeling, textures, lighting and C# programming.',
+    },
+  },
+  {
+    name: 'Modelado 3D',
+    cat: 'tools',
+    shot: jeepShot,
+    tech: '3D · Modelado · Texturizado · Iluminación',
+    icon: 'gamepad',
+    accent: 'amber',
+    kind: { es: 'Arte 3D para juegos', en: '3D art for games' },
+    blurb: {
+      es: 'Jeep militar modelado y renderizado por mí. El arte 3D es la parte menos visible y más difícil de un videojuego.',
+      en: 'Military jeep modeled and rendered by me. 3D art is the least visible and hardest part of a video game.',
     },
   },
   {

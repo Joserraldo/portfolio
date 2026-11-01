@@ -7,20 +7,38 @@ import { useLang } from '../i18n/lang'
 import { fadeUp, stagger, viewport } from './motion'
 import tkdPhoto from '../assets/taekwondo-cinturon.webp'
 import disneyPhoto from '../assets/disney-equipo.webp'
+import maraton26 from '../assets/maraton-equipo-2026.webp'
+import maraton25 from '../assets/maraton-equipo-2025.webp'
 
 interface Identity {
   icon: LucideIcon
   accent: ProjectAccent
   titleKey: 'tkdTitle' | 'schoolTitle' | 'disTitle' | 'cpTitle'
   bodyKey: 'tkdBody' | 'schoolBody' | 'disBody' | 'cpBody'
-  photo?: { src: string; altKey: 'tkdAlt' | 'disAlt'; position: string }
+  photos?: Photo[]
+}
+
+interface Photo {
+  src: string
+  altKey: 'tkdAlt' | 'disAlt' | 'cpAlt25' | 'cpAlt26'
+  /* object-position: lleva el encuadre a lo que importa (cinturón, caras) */
+  position: string
 }
 
 const IDENTITIES: Identity[] = [
-  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody', photo: { src: tkdPhoto, altKey: 'tkdAlt', position: 'object-top' } },
-  { icon: Sparkles, accent: 'amber', titleKey: 'disTitle', bodyKey: 'disBody', photo: { src: disneyPhoto, altKey: 'disAlt', position: 'object-bottom' } },
+  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody', photos: [{ src: tkdPhoto, altKey: 'tkdAlt', position: '50% 8%' }] },
+  { icon: Sparkles, accent: 'amber', titleKey: 'disTitle', bodyKey: 'disBody', photos: [{ src: disneyPhoto, altKey: 'disAlt', position: '80% 60%' }] },
   { icon: Baby, accent: 'mint', titleKey: 'schoolTitle', bodyKey: 'schoolBody' },
-  { icon: Code2, accent: 'sky', titleKey: 'cpTitle', bodyKey: 'cpBody' },
+  {
+    icon: Code2,
+    accent: 'sky',
+    titleKey: 'cpTitle',
+    bodyKey: 'cpBody',
+    photos: [
+      { src: maraton25, altKey: 'cpAlt25', position: '30% 50%' },
+      { src: maraton26, altKey: 'cpAlt26', position: '50% 30%' },
+    ],
+  },
 ]
 
 /* accent → concrete classes (static, Tailwind-friendly) */
@@ -55,7 +73,7 @@ export default function BeyondCode() {
           viewport={viewport}
           className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-[0.75fr_1fr]"
         >
-          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey, photo }) => {
+          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey, photos }) => {
             const s = STYLE[accent]
             return (
               <motion.article
@@ -64,13 +82,19 @@ export default function BeyondCode() {
                 className={`group relative overflow-hidden rounded-xl border border-edge bg-panel/80 transition-colors ${s.border}`}
               >
                 <div aria-hidden className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-2xl ${s.glow}`} />
-                {photo && (
-                  <img
-                    src={photo.src}
-                    alt={t(copy.about.trivia[photo.altKey])}
-                    loading="lazy"
-                    className={`block h-80 w-full border-b border-edge object-cover ${photo.position}`}
-                  />
+                {photos && (
+                  <div className={`grid grid-rows-[minmax(0,1fr)] overflow-hidden border-b border-edge ${photos.length > 1 ? 'h-64 grid-cols-[1.5fr_1fr] gap-px bg-edge' : 'h-[36rem]'}`}>
+                    {photos.map(({ src, altKey, position }) => (
+                      <img
+                        key={altKey}
+                        src={src}
+                        alt={t(copy.about.trivia[altKey])}
+                        loading="lazy"
+                        style={{ objectPosition: position }}
+                        className="block h-full w-full object-cover"
+                      />
+                    ))}
+                  </div>
                 )}
                 <div className="p-6">
                   <div className="flex items-center gap-3">
