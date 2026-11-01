@@ -5,18 +5,21 @@ import type { ProjectAccent } from '../data/content'
 import { copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { fadeUp, stagger, viewport } from './motion'
+import tkdPhoto from '../assets/taekwondo-cinturon.webp'
+import disneyPhoto from '../assets/disney-equipo.webp'
 
 interface Identity {
   icon: LucideIcon
   accent: ProjectAccent
   titleKey: 'tkdTitle' | 'schoolTitle' | 'disTitle' | 'cpTitle'
   bodyKey: 'tkdBody' | 'schoolBody' | 'disBody' | 'cpBody'
+  photo?: { src: string; altKey: 'tkdAlt' | 'disAlt'; position: string }
 }
 
 const IDENTITIES: Identity[] = [
-  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody' },
+  { icon: Medal, accent: 'gold', titleKey: 'tkdTitle', bodyKey: 'tkdBody', photo: { src: tkdPhoto, altKey: 'tkdAlt', position: 'object-top' } },
+  { icon: Sparkles, accent: 'amber', titleKey: 'disTitle', bodyKey: 'disBody', photo: { src: disneyPhoto, altKey: 'disAlt', position: 'object-bottom' } },
   { icon: Baby, accent: 'mint', titleKey: 'schoolTitle', bodyKey: 'schoolBody' },
-  { icon: Sparkles, accent: 'amber', titleKey: 'disTitle', bodyKey: 'disBody' },
   { icon: Code2, accent: 'sky', titleKey: 'cpTitle', bodyKey: 'cpBody' },
 ]
 
@@ -50,22 +53,32 @@ export default function BeyondCode() {
           initial="hidden"
           whileInView="show"
           viewport={viewport}
-          className="mt-10 grid gap-5 sm:grid-cols-2"
+          className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-[0.75fr_1fr]"
         >
-          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey }) => {
+          {IDENTITIES.map(({ icon: Icon, accent, titleKey, bodyKey, photo }) => {
             const s = STYLE[accent]
             return (
               <motion.article
                 key={titleKey}
                 variants={fadeUp}
-                className={`group relative overflow-hidden rounded-xl border border-edge bg-panel/80 p-6 transition-colors ${s.border}`}
+                className={`group relative overflow-hidden rounded-xl border border-edge bg-panel/80 transition-colors ${s.border}`}
               >
                 <div aria-hidden className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-2xl ${s.glow}`} />
-                <div className="flex items-center gap-3">
-                  <Icon size={22} className={s.text} aria-hidden />
-                  <h3 className="text-base font-semibold text-snow">{t(copy.about.trivia[titleKey])}</h3>
+                {photo && (
+                  <img
+                    src={photo.src}
+                    alt={t(copy.about.trivia[photo.altKey])}
+                    loading="lazy"
+                    className={`block h-80 w-full border-b border-edge object-cover ${photo.position}`}
+                  />
+                )}
+                <div className="p-6">
+                  <div className="flex items-center gap-3">
+                    <Icon size={22} className={s.text} aria-hidden />
+                    <h3 className="text-base font-semibold text-snow">{t(copy.about.trivia[titleKey])}</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-fog">{t(copy.about.trivia[bodyKey])}</p>
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-fog">{t(copy.about.trivia[bodyKey])}</p>
               </motion.article>
             )
           })}

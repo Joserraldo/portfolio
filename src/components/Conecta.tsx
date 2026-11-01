@@ -15,6 +15,7 @@ import { conecta, copy } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { ACCENT } from './accents'
 import { fadeUp, stagger, viewport } from './motion'
+import teamPhoto from '../assets/hackathon-premio.webp'
 
 const AGENT_ICONS: Record<string, LucideIcon> = {
   upload: Upload,
@@ -210,15 +211,28 @@ export default function Conecta() {
 
         <div className="mt-16">
           <h3 className="text-2xl font-bold text-snow">{t(copy.conecta.teamTitle)}</h3>
-          <ul className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {conecta.team.map((m) => (
-              <li key={m.name} className="border-l-2 border-gold pl-3">
-                <p className="font-semibold text-snow">{m.name}</p>
-                <p className="text-sm text-fog">{t(m.role)}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 max-w-2xl text-fog">{t(copy.conecta.teamNote)}</p>
+          <div className="mt-5 grid items-center gap-8 lg:grid-cols-[1.25fr_1fr]">
+            <figure>
+              <img
+                src={teamPhoto}
+                alt={t(copy.conecta.teamPhoto)}
+                loading="lazy"
+                className="block aspect-[3/2] w-full rounded-lg border border-edge object-cover object-[center_75%]"
+              />
+              <figcaption className="mt-2 text-sm text-fog">{t(copy.conecta.teamPhoto)}</figcaption>
+            </figure>
+            <div>
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {conecta.team.map((m) => (
+                  <li key={m.name} className="border-l-2 border-gold pl-3">
+                    <p className="font-semibold text-snow">{m.name}</p>
+                    <p className="text-sm text-fog">{t(m.role)}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 text-fog">{t(copy.conecta.teamNote)}</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

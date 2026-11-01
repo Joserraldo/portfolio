@@ -16,6 +16,7 @@ import {
   HeartPulse,
   Lock,
   Music,
+  Play,
   Radio,
   Rocket,
   Shirt,
@@ -62,10 +63,35 @@ function Card({ p }: { p: Project }) {
   const { t } = useLang()
   const Icon = ICONS[p.icon]
   const a = ACCENT[p.accent]
+  const [playing, setPlaying] = useState(false)
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-edge bg-panel transition-[border-color,transform] duration-200 hover:-translate-y-1 hover:border-snow/60">
-      {p.shot ? (
+      {p.video ? (
+        playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${p.video}?autoplay=1`}
+            title={p.name}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="block aspect-[16/10] w-full border-b border-edge"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={`${t(copy.projects.playVideo)}: ${p.name}`}
+            className="relative block aspect-[16/10] w-full overflow-hidden border-b border-edge"
+          >
+            <img src={`https://i.ytimg.com/vi/${p.video}/hqdefault.jpg`} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-gold text-panel transition-transform duration-200 group-hover:scale-110">
+                <Play size={24} aria-hidden />
+              </span>
+            </span>
+          </button>
+        )
+      ) : p.shot ? (
         <img src={p.shot} alt="" loading="lazy" className="block aspect-[16/10] w-full border-b border-edge object-cover object-top" />
       ) : (
         <div className={`flex aspect-[16/10] w-full items-center justify-center border-b border-edge bg-void/50 ${a.text}`}>

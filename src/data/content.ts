@@ -7,6 +7,8 @@ import factoryShot from '../assets/p-factory.webp'
 import nexiaShot from '../assets/p-nexia.webp'
 import mnistShot from '../assets/p-mnist.webp'
 import manoShot from '../assets/p-mano.webp'
+import iotShot from '../assets/p-iot.webp'
+import huevosShot from '../assets/p-huevos.webp'
 import perroShot from '../assets/p-perro.webp'
 import urbanShot from '../assets/p-urban.webp'
 import cdeLanding from '../assets/cde-landing.webp'
@@ -111,6 +113,10 @@ export const copy = {
     galleryTitle: { es: 'El producto', en: 'The product' },
     syntheticNote: { es: 'Capturas con datos de prueba.', en: 'Screenshots use test data.' },
     teamTitle: { es: 'El equipo', en: 'The team' },
+    teamPhoto: {
+      es: 'El equipo de CDE Conecta recibe la distinción del 50 % en la Semana de la Ingeniería',
+      en: 'The CDE Conecta team receiving the 50% distinction at Engineering Week',
+    },
     teamNote: {
       es: 'Más que el premio, este proyecto me abrió conexiones muy valiosas para mi futuro.',
       en: 'Beyond the prize, this project opened connections that matter for my future.',
@@ -145,6 +151,7 @@ export const copy = {
   about: {
     trivia: {
       tkdTitle: { es: 'Taekwondo', en: 'Taekwondo' },
+      tkdAlt: { es: 'José con su cinturón negro bordado con su nombre', en: 'José with his black belt embroidered with his name' },
       tkdBody: {
         es: 'Cinturón negro. He competido a nivel nacional e internacional representando a la UNAB, a Santander y a Colombia.',
         en: 'Black belt. I have competed nationally and internationally for UNAB, Santander and Colombia.',
@@ -155,6 +162,7 @@ export const copy = {
         en: 'My black-belt project showed how taekwondo helps children do better at school. I got it adopted at the school I attended.',
       },
       disTitle: { es: 'Disney', en: 'Disney' },
+      disAlt: { es: 'José con su equipo en Indiana Jones Epic Stunt Spectacular', en: 'José with his team at the Indiana Jones Epic Stunt Spectacular' },
       disBody: {
         es: 'Atracciones y operaciones en Walt Disney World: Indiana Jones Epic Stunt Spectacular, Olaf’s Celebrity Spotlight, Mickey Shorts Theater y Red Carpet Dreams. Mucha gente al día, siempre en inglés.',
         en: 'Attractions & operations at Walt Disney World: Indiana Jones Epic Stunt Spectacular, Olaf’s Celebrity Spotlight, Mickey Shorts Theater and Red Carpet Dreams. Large crowds every day, always in English.',
@@ -179,6 +187,7 @@ export const copy = {
       es: 'Organizados por tipo de trabajo. Cada uno dice qué es y qué hice.',
       en: 'Grouped by type of work. Each one says what it is and what I did.',
     },
+    playVideo: { es: 'Ver el video', en: 'Watch the video' },
     viewCode: { es: 'Código', en: 'Code' },
     visit: { es: 'Visitar', en: 'Visit' },
     privateCode: { es: 'Código privado', en: 'Private source' },
@@ -335,6 +344,7 @@ export interface Project {
   code?: string
   isPrivate?: boolean
   shot?: string
+  video?: string
   tech: string
   icon:
     | 'bus' | 'factory' | 'graduation' | 'clipboard' | 'download' | 'wallet'
@@ -468,6 +478,7 @@ export const projects: Project[] = [
     name: 'Huevos dañados',
     cat: 'ai',
     code: 'https://github.com/Joserraldo/damaged_eggs_CNN',
+    shot: huevosShot,
     tech: 'YOLOv8n · FastAPI · Expo',
     icon: 'egg',
     accent: 'violet',
@@ -536,6 +547,7 @@ export const projects: Project[] = [
     name: 'Flota de 10 dispositivos',
     cat: 'iot',
     code: 'https://github.com/Joserraldo/proyecto_iot_10_devices',
+    shot: iotShot,
     tech: 'Python · Azure IoT Central · DPS',
     icon: 'radio',
     accent: 'sky',
@@ -556,6 +568,20 @@ export const projects: Project[] = [
     blurb: {
       es: 'Telemetría, ESP32 simulado y nodos en VM, comparando protocolos con mediciones reales.',
       en: 'Telemetry, simulated ESP32 and VM nodes, comparing protocols with real measurements.',
+    },
+  },
+  {
+    name: 'CardboAnt',
+    cat: 'tools',
+    code: 'https://github.com/Joserraldo/HormigaCulonaGame',
+    video: '5l5ThqYfUcE',
+    tech: 'Unity · C#',
+    icon: 'gamepad',
+    accent: 'violet',
+    kind: { es: 'Juego en equipo', en: 'Team game' },
+    blurb: {
+      es: 'Juego en Unity con shaders propios, hecho en equipo para la clase de multimedios.',
+      en: 'Unity game with custom shaders, built as a team for a multimedia course.',
     },
   },
   {
@@ -608,19 +634,6 @@ export const projects: Project[] = [
     blurb: {
       es: 'Control de finanzas personales, extendido con Jaime en el taller de arquitectura.',
       en: 'Personal-finance app, extended with Jaime in the architecture workshop.',
-    },
-  },
-  {
-    name: 'Hormiga Culona',
-    cat: 'tools',
-    code: 'https://github.com/Joserraldo/HormigaCulonaGame',
-    tech: 'Unity · C#',
-    icon: 'gamepad',
-    accent: 'violet',
-    kind: { es: 'Juego', en: 'Game' },
-    blurb: {
-      es: 'Juego en Unity con shaders propios para la clase de multimedios.',
-      en: 'Unity game with custom shaders for a multimedia course.',
     },
   },
 ]
