@@ -363,7 +363,7 @@ export const projects: Project[] = [
   {
     name: 'Hidrolavados Solution',
     cat: 'custom',
-    url: 'https://hidrolavados.solution-lavados.workers.dev',
+    url: 'https://hidrolavados.com',
     isPrivate: true,
     shot: hidroShot,
     tech: 'Next.js · Firebase · Supabase',
