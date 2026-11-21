@@ -7,6 +7,7 @@ import { useLang } from '../i18n/lang'
 const LINKS = [
   { href: '#ai', key: 'ai' },
   { href: '#agents', key: 'agents' },
+  { href: '#automation', key: 'automation' },
   { href: '#transit', key: 'transit' },
   { href: '#flagship', key: 'calaut' },
   { href: '#projects', key: 'projects' },

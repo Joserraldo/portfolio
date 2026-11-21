@@ -1,4 +1,5 @@
 import { MotionConfig } from 'framer-motion'
+import Automation from './components/Automation'
 import BeyondCode from './components/BeyondCode'
 import Bucaratransit from './components/Bucaratransit'
 import Conecta from './components/Conecta'
@@ -21,6 +22,7 @@ export default function App() {
           <Hero />
           <Orchestration />
           <Conecta />
+          <Automation />
           <Bucaratransit />
           <Flagship />
           <Projects />

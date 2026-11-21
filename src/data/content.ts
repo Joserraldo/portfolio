@@ -16,6 +16,20 @@ import mazonShot from '../assets/p-mazon.webp'
 import unab360Shot from '../assets/p-unab360.webp'
 import smartcityShot from '../assets/p-smartcity.webp'
 import nasaShot from '../assets/p-nasa.webp'
+import n8nRouter from '../assets/n8n-00-router.webp'
+import n8nRag from '../assets/n8n-01-rag.webp'
+import n8nCalendario from '../assets/n8n-02-calendario.webp'
+import n8nMcp from '../assets/n8n-03-mcp.webp'
+import n8nNoticias from '../assets/n8n-04-noticias.webp'
+import n8nIngesta from '../assets/n8n-05-ingesta.webp'
+import n8nTramites from '../assets/n8n-06-tramites.webp'
+import unabGrafica from '../assets/unab-grafica.webp'
+import unabBold from '../assets/unab-bold.webp'
+import unabQr from '../assets/unab-qr.webp'
+import unabAnalitica from '../assets/unab-analitica.webp'
+import unabAndroidChat from '../assets/unab-android-chat.webp'
+import unabAndroidBold from '../assets/unab-android-bold.webp'
+import unabAndroidRiesgo from '../assets/unab-android-riesgo.webp'
 import cdeLanding from '../assets/cde-landing.webp'
 import cdeAsistente from '../assets/cde-asistente.webp'
 import cdeImportacion from '../assets/cde-importacion.webp'
@@ -59,6 +73,7 @@ export const copy = {
   nav: {
     ai: { es: 'IA', en: 'AI' },
     agents: { es: 'CDE Conecta', en: 'CDE Conecta' },
+    automation: { es: 'Automatización', en: 'Automation' },
     transit: { es: 'BUCARATRANSIT', en: 'BUCARATRANSIT' },
     calaut: { es: 'Calaut', en: 'Calaut' },
     projects: { es: 'Proyectos', en: 'Projects' },
@@ -135,6 +150,37 @@ export const copy = {
     },
     processTitle: { es: 'Cómo trabajo con agentes', en: 'How I work with agents' },
     toolsTitle: { es: 'Qué manejo', en: 'What I work with' },
+  },
+  automation: {
+    kicker: { es: 'Automatización con n8n · Ciencia de Datos, UNAB', en: 'n8n automation · Data Science, UNAB' },
+    title: { es: 'Automatizaciones', en: 'Automations' },
+    project: { es: 'Asistente UNAB 360', en: 'UNAB 360 Assistant' },
+    lead: {
+      es: 'Un asistente académico que conoce tu matrícula, tus notas, tus tareas, tus préstamos de biblioteca y tu riesgo académico. Además reserva espacios, cobra con Bold y lee fotos. Detrás hay 7 flujos de n8n que enrutan cada pregunta al agente correcto.',
+      en: 'An academic assistant that knows your enrollment, grades, assignments, library loans and academic risk. It also books rooms, takes Bold payments and reads photos. Behind it, 7 n8n workflows route each question to the right agent.',
+    },
+    cta: { es: 'Probar la demo', en: 'Try the demo' },
+    video: { es: 'Ver el video', en: 'Watch the video' },
+    code: { es: 'Ver código', en: 'View code' },
+    flowsTitle: { es: 'Los flujos en n8n', en: 'The n8n workflows' },
+    flowsLead: {
+      es: 'Capturas reales del editor en producción. Elige un flujo.',
+      en: 'Real screenshots of the production editor. Pick a workflow.',
+    },
+    openFull: { es: 'Abrir en grande', en: 'Open full size' },
+    pathTitle: { es: 'El camino de una pregunta', en: 'How a question travels' },
+    decision: {
+      es: 'El LLM redacta la respuesta, pero las tarjetas de pago y las gráficas salen de un endpoint determinista: los montos los calcula el servidor desde la base de datos y el modelo nunca ve un número de tarjeta.',
+      en: 'The LLM writes the reply, but payment cards and charts come from a deterministic endpoint: the server computes amounts from the database and the model never sees a card number.',
+    },
+    featuresTitle: { es: 'Lo que hace', en: 'What it does' },
+    galleryTitle: { es: 'Web y Android', en: 'Web and Android' },
+    syntheticNote: {
+      es: 'Datos de estudiantes sintéticos y Bold en modo de pruebas: ningún cobro es real.',
+      en: 'Synthetic student data and Bold in test mode: no real charges.',
+    },
+    teamTitle: { es: 'El equipo', en: 'The team' },
+    stack: 'n8n · PostgreSQL 16 + pgvector · FastMCP · FastAPI · scikit-learn · Kotlin/Compose · Caddy · Docker · AWS EC2',
   },
   transit: {
     kicker: { es: 'La solución de movilidad para Bucaramanga', en: 'A mobility solution for Bucaramanga' },
@@ -510,21 +556,6 @@ export const projects: Project[] = [
     blurb: {
       es: 'Plataforma educativa con formación gamificada para una fundación sin ánimo de lucro.',
       en: 'Educational platform with gamified learning for a non-profit foundation.',
-    },
-  },
-  {
-    name: 'Asistente UNAB 360',
-    cat: 'ai',
-    url: 'https://chatbotunab.duckdns.org/app/',
-    code: 'https://github.com/Joserraldo/chatbot-academico-unab',
-    shot: unab360Shot,
-    tech: 'n8n · RAG pgvector · MCP · FastAPI · Kotlin · AWS',
-    icon: 'bot',
-    accent: 'gold',
-    kind: { es: 'Chatbot académico', en: 'Academic chatbot' },
-    blurb: {
-      es: 'Asistente que conoce notas, tareas, préstamos y riesgo académico. 7 flujos de n8n con router y guardrails, RAG con citas, servidor MCP con 18 herramientas, pagos con Bold, modelo de riesgo con scikit-learn y app Android. Desplegado en AWS con datos sintéticos.',
-      en: 'Assistant that knows grades, assignments, loans and academic risk. 7 n8n workflows with a router and guardrails, RAG with citations, an MCP server with 18 tools, Bold payments, a scikit-learn risk model and an Android app. Deployed on AWS with synthetic data.',
     },
   },
   {
@@ -1079,3 +1110,150 @@ export const transit = {
     { src: btEmpresa, caption: { es: 'Métricas de cada transportadora', en: 'Metrics for each transit company' } },
   ],
 } as const
+
+/* ────────────────────────── automation (Asistente UNAB 360) ──────── */
+
+export const automation = {
+  url: 'https://chatbotunab.duckdns.org/app/',
+  video: 'https://youtu.be/iAiiowTgKYs',
+  code: 'https://github.com/Joserraldo/chatbot-academico-unab',
+  facts: [
+    { value: '7', label: { es: 'flujos de n8n', en: 'n8n workflows' } },
+    { value: '18', label: { es: 'herramientas MCP', en: 'MCP tools' } },
+    { value: '6', label: { es: 'contenedores en AWS', en: 'containers on AWS' } },
+    { value: '15/15', label: { es: 'pruebas de humo en verde', en: 'smoke tests passing' } },
+  ],
+  workflows: [
+    {
+      id: '00',
+      src: n8nRouter,
+      name: { es: 'Router', en: 'Router' },
+      body: {
+        es: 'La puerta de entrada. Webhook → guardrail de entrada → ¿bloqueado? → ¿trae imagen? (visión) → un LLM clasifica la intención → llama al sub-flujo 01 a 04 o 06 → guardrail de salida → enriquece con tarjetas y gráficas → registra en chat_log → responde.',
+        en: 'The front door. Webhook → input guardrail → blocked? → has an image? (vision) → an LLM classifies the intent → calls sub-flow 01 to 04 or 06 → output guardrail → enriches with cards and charts → logs to chat_log → responds.',
+      },
+    },
+    {
+      id: '01',
+      src: n8nRag,
+      name: { es: 'RAG general', en: 'General RAG' },
+      body: {
+        es: 'Busca en pgvector los fragmentos de los documentos institucionales que más se parecen a la pregunta y responde citando la fuente.',
+        en: 'Searches pgvector for the institutional document chunks closest to the question and answers citing the source.',
+      },
+    },
+    {
+      id: '02',
+      src: n8nCalendario,
+      name: { es: 'Calendario', en: 'Calendar' },
+      body: {
+        es: 'Responde fechas del calendario académico a partir de los datos oficiales del semestre.',
+        en: 'Answers academic-calendar dates from the official semester data.',
+      },
+    },
+    {
+      id: '03',
+      src: n8nMcp,
+      name: { es: 'Historial · agente MCP', en: 'Records · MCP agent' },
+      body: {
+        es: 'Un agente con memoria en Postgres que usa el servidor MCP: estado académico, notas por corte, horario, tareas de TEMA, préstamos de biblioteca, proyección de semestres y riesgo académico.',
+        en: 'An agent with Postgres memory that uses the MCP server: academic standing, grades per term, schedule, TEMA assignments, library loans, semester projection and academic risk.',
+      },
+    },
+    {
+      id: '04',
+      src: n8nNoticias,
+      name: { es: 'Noticias', en: 'News' },
+      body: {
+        es: 'Cada 6 horas recoge noticias de 11 fuentes, las clasifica y quita duplicados. En el chat responde con fuente y fecha.',
+        en: 'Every 6 hours it collects news from 11 sources, classifies them and removes duplicates. In chat it answers with source and date.',
+      },
+    },
+    {
+      id: '05',
+      src: n8nIngesta,
+      name: { es: 'Ingesta RAG', en: 'RAG ingestion' },
+      body: {
+        es: 'Parte los documentos en fragmentos, calcula embeddings multilingües y los guarda en pgvector para que el flujo 01 los encuentre.',
+        en: 'Splits documents into chunks, computes multilingual embeddings and stores them in pgvector so flow 01 can find them.',
+      },
+    },
+    {
+      id: '06',
+      src: n8nTramites,
+      name: { es: 'Trámites y pagos', en: 'Errands & payments' },
+      body: {
+        es: 'Reservas de espacios con detección de choques, pago de matrícula con Bold y enlaces oficiales con su código QR.',
+        en: 'Room bookings with clash detection, tuition payment with Bold and official links with their QR code.',
+      },
+    },
+  ],
+  steps: [
+    { es: 'Guardrail de entrada', en: 'Input guardrail' },
+    { es: 'Visión y QR', en: 'Vision & QR' },
+    { es: 'Clasificar intención', en: 'Classify intent' },
+    { es: 'Agente con herramientas', en: 'Agent with tools' },
+    { es: 'Guardrail de salida', en: 'Output guardrail' },
+    { es: 'Tarjetas y gráficas', en: 'Cards & charts' },
+    { es: 'Registro en chat_log', en: 'Log to chat_log' },
+    { es: 'Respuesta', en: 'Response' },
+  ] as L[],
+  features: [
+    {
+      icon: 'tools',
+      title: { es: 'Agentes con herramientas reales', en: 'Agents with real tools' },
+      body: { es: 'Servidor MCP propio con 18 herramientas sobre la base académica. También se puede usar desde Claude.', en: 'Own MCP server with 18 tools over the academic database. It also works from Claude.' },
+    },
+    {
+      icon: 'chart',
+      title: { es: 'Gráficas en la conversación', en: 'Charts inside the chat' },
+      body: { es: '“Muéstrame mis notas en gráfica”: promedio por semestre, avance, créditos y factores de riesgo.', en: '“Show my grades as a chart”: average per semester, progress, credits and risk factors.' },
+    },
+    {
+      icon: 'risk',
+      title: { es: 'Modelo de riesgo académico', en: 'Academic-risk model' },
+      body: { es: 'Regresión logística sin fuga de información (AUC 0,86 en validación cruzada) que explica sus factores a cada estudiante.', en: 'Leak-free logistic regression (0.86 cross-validated AUC) that explains its factors to each student.' },
+    },
+    {
+      icon: 'vision',
+      title: { es: 'Lee imágenes', en: 'Reads images' },
+      body: { es: 'Una foto de un horario, un recibo o un cartel: modelo de visión más lectura local de QR.', en: 'A photo of a schedule, a receipt or a poster: vision model plus local QR decoding.' },
+    },
+    {
+      icon: 'pay',
+      title: { es: 'Pagos con Bold', en: 'Bold payments' },
+      body: { es: 'Checkout embebido con firma de integridad en el servidor y webhook verificado con HMAC.', en: 'Embedded checkout with a server-side integrity signature and an HMAC-verified webhook.' },
+    },
+    {
+      icon: 'booking',
+      title: { es: 'Reservas de espacios', en: 'Room bookings' },
+      body: { es: 'Disponibilidad por franja, rechazo de choques y cobro de los espacios con tarifa.', en: 'Availability by slot, clash rejection and payment for paid spaces.' },
+    },
+    {
+      icon: 'news',
+      title: { es: 'Noticias del día', en: 'Daily news' },
+      body: { es: 'Scraper de 11 fuentes de educación y tecnología, con fuente y fecha.', en: 'Scraper over 11 education and tech sources, with source and date.' },
+    },
+    {
+      icon: 'shield',
+      title: { es: 'Guardrails deterministas', en: 'Deterministic guardrails' },
+      body: { es: 'Frena inyección de prompt, SQL, datos de otro estudiante y tarjetas en el chat. Todo queda auditado.', en: 'Stops prompt injection, SQL, other students’ data and card numbers in chat. Everything is audited.' },
+    },
+  ],
+  gallery: [
+    { src: unab360Shot, caption: { es: 'Chat con el panel “Hoy en tu U”', en: 'Chat with the “Today at your U” panel' } },
+    { src: unabGrafica, caption: { es: 'Gráfica generada en la conversación', en: 'Chart generated in the conversation' } },
+    { src: unabBold, caption: { es: 'Checkout de Bold embebido (modo pruebas)', en: 'Embedded Bold checkout (test mode)' } },
+    { src: unabQr, caption: { es: 'Foto de un cartel → QR detectado', en: 'Photo of a poster → QR detected' } },
+    { src: unabAnalitica, caption: { es: 'Dashboard de ciencia de datos', en: 'Data-science dashboard' } },
+  ],
+  phones: [
+    { src: unabAndroidChat, caption: { es: 'Android: chat', en: 'Android: chat' } },
+    { src: unabAndroidBold, caption: { es: 'Android: pago con Bold', en: 'Android: Bold payment' } },
+    { src: unabAndroidRiesgo, caption: { es: 'Android: riesgo académico', en: 'Android: academic risk' } },
+  ],
+  team: [
+    { name: 'José Téllez', role: { es: 'Arquitectura, datos, flujos de n8n, servicios, ML y documentación', en: 'Architecture, data, n8n workflows, services, ML and documentation' } },
+    { name: 'Santiago Cabeza', role: { es: 'Infraestructura en AWS, despliegue y primer frontend', en: 'AWS infrastructure, deployment and first frontend' } },
+  ],
+}
