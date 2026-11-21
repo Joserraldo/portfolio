@@ -44,11 +44,12 @@ import btBus from '../assets/bt-app-siguiendo-bus.webp'
 import btWallet from '../assets/bt-app-wallet.webp'
 import btConductor from '../assets/bt-app-conductor.webp'
 import btInicio from '../assets/bt-app-inicio.webp'
-import agendaShot from '../assets/calaut-agenda.webp'
-import pilotoShot from '../assets/calaut-piloto.webp'
-import omnicanalShot from '../assets/calaut-omnicanal.webp'
-import crmShot from '../assets/calaut-crm.webp'
-import healthShot from '../assets/calaut-health.webp'
+import paginaShot from '../assets/calaut-pagina.webp'
+import reservaShot from '../assets/calaut-reserva.webp'
+import agendaShot from '../assets/calaut-agenda-v2.webp'
+import crmShot from '../assets/calaut-crm-v2.webp'
+import avisosShot from '../assets/calaut-avisos.webp'
+import saludShot from '../assets/calaut-salud.webp'
 
 export type { L }
 
@@ -254,8 +255,8 @@ export const copy = {
     stack: 'React 18 · TypeScript · Firebase · Cloud Functions v2 · Google Calendar API · Bold · Resend · PWA',
     galleryTitle: { es: 'Secciones del producto', en: 'Product sections' },
     galleryLead: {
-      es: 'Capturas reales del flujo: agenda por salas, piloto automático, omnicanalidad, CRM y módulo clínico.',
-      en: 'Real screenshots of the flow: room-based schedule, autopilot, omnichannel, CRM and the clinical module.',
+      es: 'Capturas de la demo en vivo, con datos de ejemplo: página propia, reserva, agenda, CRM, avisos y la versión para consultorios.',
+      en: 'Screenshots of the live demo, with sample data: own page, booking, calendar, CRM, notifications and the clinic version.',
     },
     altShot: {
       es: 'Captura de la landing de Calaut.pro',
@@ -769,37 +770,41 @@ export const flagship = {
   name: 'Calaut.pro',
   url: 'https://calaut.pro',
   tagline: {
-    es: 'Tu negocio, en piloto automático.',
-    en: 'Your business, on autopilot.',
+    es: 'Tu negocio en internet, con la agenda adentro.',
+    en: 'Your business online, with the booking calendar built in.',
   },
   intro: {
-    es: 'Lo diseñé, lo construyo y lo escalo yo mismo — del multi-tenant al deploy.',
-    en: 'I designed it, I build it, I scale it — multi-tenant through deploy.',
+    es: 'Cada negocio recibe su propia página web, y el cliente reserva ahí mismo: ve las horas libres de verdad y la cita cae en la agenda sin contestar un mensaje. Lo diseñé, lo construyo y lo escalo yo mismo, del multi-tenant al despliegue.',
+    en: 'Every business gets its own website, and clients book right there: they see real open slots and the appointment lands in the calendar without anyone answering a message. I designed it, I build it and I scale it myself, from multi-tenancy to deployment.',
   },
   bullets: [
     {
-      es: 'Arquitectura SaaS B2B multi-tenant con privacidad por roles: agendas aisladas y salas privadas entre colegas.',
-      en: 'Multi-tenant B2B SaaS architecture with role-based privacy: isolated agendas and hidden colleague rooms.',
+      es: 'Página propia en calaut.pro/tu-negocio con SEO local: servicios, precios, reseñas y mapa, sin diseñador ni hosting.',
+      en: 'Own page at calaut.pro/your-business with local SEO: services, prices, reviews and map, no designer or hosting needed.',
     },
     {
-      es: 'Sincronización bidireccional con Google Calendar, sin dobles reservas.',
-      en: 'Bi-directional Google Calendar synchronization — no double bookings.',
+      es: 'Agenda por sede, sala y profesional: dos citas no caben en la misma silla y cada quien ve solo lo suyo.',
+      en: 'Calendar by location, room and professional: two bookings never share a chair and each person sees only their own.',
     },
     {
-      es: 'Automatización omnicanal: confirmaciones, recordatorios a 24h y loops de reseñas por WhatsApp dinámico y email.',
-      en: 'Omnichannel automation: confirmations, 24h reminders and review loops via dynamic WhatsApp links and email.',
+      es: 'Sincronización con Google Calendar: lo que está bloqueado allá frena las reservas aquí.',
+      en: 'Google Calendar sync: whatever is blocked there stops bookings here.',
     },
     {
-      es: 'CRM con perfilado automático de pacientes y récord clínico opcional cumpliendo Res. 2275 y 1995 (Colombia).',
-      en: 'CRM with automatic patient profiling and optional clinical records compliant with Colombian Res. 2275 & 1995.',
+      es: 'Confirmación por correo, recordatorio del día antes y WhatsApp con el mensaje ya escrito. Cada reserva guarda de dónde llegó: Google, Instagram o QR.',
+      en: 'Email confirmation, day-before reminder and WhatsApp with the message already written. Each booking records where it came from: Google, Instagram or QR.',
     },
     {
-      es: 'PWA instalable sin pasar por una tienda de apps.',
-      en: 'Installable PWA, no app store needed.',
+      es: 'CRM que avisa quién dejó de venir y un programa de fidelidad por visitas.',
+      en: 'A CRM that flags who stopped coming and a visit-based loyalty program.',
     },
     {
-      es: 'Iteración con usuarios reales en medicina, estética, legal y educación.',
-      en: 'Iterated with real users across medical, aesthetics, legal and education.',
+      es: 'Módulo de salud: historia clínica firmada e inalterable, CIE-10 y CUPS, y RIPS en JSON (Res. 2275 y 1995).',
+      en: 'Health module: signed, tamper-proof clinical records, ICD-10 and CUPS, and RIPS JSON (Colombian Res. 2275 & 1995).',
+    },
+    {
+      es: 'Versiones para salud, barberías y salones, y cualquier negocio que vende su tiempo. Demo en vivo sin registro.',
+      en: 'Versions for health, barbershops and salons, and any business that sells its time. Live demo, no sign-up.',
     },
     {
       es: 'En desarrollo: un agente de migración, como Migra de CDE Conecta, para traer los datos de un negocio de una sola vez.',
@@ -808,38 +813,45 @@ export const flagship = {
   ] as L[],
   gallery: [
     {
+      src: paginaShot,
+      caption: {
+        es: 'Tu página: la que ve el cliente en el celular, con servicios, precios y el botón de reservar.',
+        en: 'Your page: what clients see on their phone, with services, prices and the booking button.',
+      },
+    },
+    {
+      src: reservaShot,
+      caption: {
+        es: 'La reserva en 5 pasos: servicio, profesional, fecha, hora y datos. La duración aparta el tiempo real.',
+        en: 'Booking in 5 steps: service, professional, date, time and details. Duration reserves the real time.',
+      },
+    },
+    {
       src: agendaShot,
       caption: {
-        es: 'El poder de tu agenda: consultorios, especialidades y vistas por rol sobre una sola grilla.',
-        en: 'Your agenda at a glance: rooms, specialties and per-role views on a single grid.',
-      },
-    },
-    {
-      src: pilotoShot,
-      caption: {
-        es: 'El piloto automático en 5 pasos: del agendamiento al recordatorio de 24 h sin intervención.',
-        en: 'Autopilot in 5 steps: from booking to the 24h reminder with zero intervention.',
-      },
-    },
-    {
-      src: omnicanalShot,
-      caption: {
-        es: 'Omnicanalidad: confirmación al paciente por WhatsApp y emails transaccionales propios.',
-        en: 'Omnichannel: patient confirmation over WhatsApp plus own transactional emails.',
+        es: 'La agenda por profesional, con descansos y la fuente de cada cita.',
+        en: 'The calendar per professional, with breaks and the source of each booking.',
       },
     },
     {
       src: crmShot,
       caption: {
-        es: 'CRM y landing pública por negocio: cada tenant con su micrositio y reactivación de clientes.',
-        en: 'CRM and per-business public landing: every tenant gets its own microsite and client reactivation.',
+        es: 'El CRM: quién dejó de venir, de dónde llegó y su avance en el programa de visitas.',
+        en: 'The CRM: who stopped coming, where they came from and their progress in the visit program.',
       },
     },
     {
-      src: healthShot,
+      src: avisosShot,
       caption: {
-        es: 'Módulo clínico opcional: RIPS JSON (Res. 2275) e historia clínica inmutable (Res. 1995).',
-        en: 'Optional clinical module: automatic RIPS JSON (Res. 2275) and immutable clinical records (Res. 1995).',
+        es: 'Lo que sale solo: correo de confirmación, WhatsApp y la cita en Google Calendar.',
+        en: 'What goes out on its own: confirmation email, WhatsApp and the event in Google Calendar.',
+      },
+    },
+    {
+      src: saludShot,
+      caption: {
+        es: 'Calaut para consultorios: historia clínica inalterable, RIPS y varias sedes.',
+        en: 'Calaut for clinics: tamper-proof clinical records, RIPS and multiple locations.',
       },
     },
   ] as { src: string; caption: L }[],

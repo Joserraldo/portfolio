@@ -3,7 +3,7 @@ import { CalendarCheck, ExternalLink, Gauge, ShieldCheck, Sparkles } from 'lucid
 import { copy, flagship } from '../data/content'
 import { useLang } from '../i18n/lang'
 import { fadeUp, stagger, viewport } from './motion'
-import shot from '../assets/calaut-landing.jpeg'
+import shot from '../assets/calaut-landing.webp'
 
 export default function Flagship() {
   const { t } = useLang()
