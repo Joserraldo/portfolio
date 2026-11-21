@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion'
 import {
+  Bot,
   Brain,
   Briefcase,
+  Building2,
   Bus,
+  NotebookPen,
+  Satellite,
+  ShoppingBag,
   ClipboardList,
   Code2,
   Dog,
@@ -55,6 +60,11 @@ const ICONS: Record<Project['icon'], LucideIcon> = {
   music: Music,
   dog: Dog,
   hash: Hash,
+  store: ShoppingBag,
+  bot: Bot,
+  city: Building2,
+  satellite: Satellite,
+  notebook: NotebookPen,
 }
 
 const CAT_ICONS = { briefcase: Briefcase, rocket: Rocket, brain: Brain, radio: Radio, wrench: Wrench }

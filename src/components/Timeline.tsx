@@ -5,6 +5,7 @@ import {
   GraduationCap,
   Medal,
   Rocket,
+  Satellite,
   Sparkles,
   Trophy,
 } from 'lucide-react'
@@ -24,6 +25,7 @@ const ICONS: Record<Milestone['icon'], LucideIcon> = {
   factory: Factory,
   medal: Medal,
   graduation: GraduationCap,
+  satellite: Satellite,
 }
 
 export default function Timeline() {

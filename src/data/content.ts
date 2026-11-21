@@ -12,6 +12,10 @@ import huevosShot from '../assets/p-huevos.webp'
 import jeepShot from '../assets/modelado-jeep.webp'
 import perroShot from '../assets/p-perro.webp'
 import urbanShot from '../assets/p-urban.webp'
+import mazonShot from '../assets/p-mazon.webp'
+import unab360Shot from '../assets/p-unab360.webp'
+import smartcityShot from '../assets/p-smartcity.webp'
+import nasaShot from '../assets/p-nasa.webp'
 import cdeLanding from '../assets/cde-landing.webp'
 import cdeAsistente from '../assets/cde-asistente.webp'
 import cdeImportacion from '../assets/cde-importacion.webp'
@@ -88,8 +92,8 @@ export const copy = {
     kicker: { es: 'Ganador · UNAB Venture Challenge 2026', en: 'Winner · UNAB Venture Challenge 2026' },
     title: { es: 'CDE Conecta', en: 'CDE Conecta' },
     lead: {
-      es: 'Un CRM 2.0 para el Centro de Desarrollo Empresarial de la UNAB. Reemplaza un Excel de 30 hojas y le da a cada emprendimiento un panel para seguir creciendo. El CDE lo va a implementar.',
-      en: 'A CRM 2.0 for UNAB’s Business Development Center. It replaces a 30-sheet Excel workbook and gives each startup its own panel to keep growing. The Center will implement it.',
+      es: 'Un CRM 2.0 para el Centro de Desarrollo Empresarial de la UNAB. Reemplaza un Excel de 30 hojas y le da a cada emprendimiento un panel para seguir creciendo. Ahora estamos construyéndolo en serio, con el apoyo de la UNAB: muy pronto será un SaaS comercial para otras empresas.',
+      en: 'A CRM 2.0 for UNAB’s Business Development Center. It replaces a 30-sheet Excel workbook and gives each startup its own panel to keep growing. We are now building it for real, backed by UNAB: it will soon become a commercial SaaS for other companies.',
     },
     cta: { es: 'Ver el producto', en: 'See the product' },
     privateCode: { es: 'Código privado', en: 'Private source' },
@@ -257,7 +261,7 @@ export const skillGroups: SkillGroup[] = [
   {
     icon: 'agents',
     title: { es: 'Agentes y automatización', en: 'Agents & automation' },
-    items: ['Claude Code', 'Hermes Agent', 'Subagents', 'Skills', 'n8n', 'LLM routing', 'CDM', 'Token optimization'],
+    items: ['Claude Code', 'Hermes Agent', 'Subagents', 'Skills', 'n8n', 'MCP', 'RAG', 'LLM routing', 'CDM', 'Token optimization'],
   },
   {
     icon: 'lang',
@@ -267,7 +271,7 @@ export const skillGroups: SkillGroup[] = [
   {
     icon: 'backend',
     title: { es: 'Backend', en: 'Backend' },
-    items: ['Node.js', 'Express', 'NestJS', 'Laravel', 'Django', 'FastAPI', 'REST', 'WebSockets'],
+    items: ['Node.js', 'Express', 'NestJS', 'Fastify', 'Laravel', 'Django', 'FastAPI', 'REST', 'WebSockets', 'Bold (pagos)', 'Brevo', 'Resend'],
   },
   {
     icon: 'frontend',
@@ -277,27 +281,27 @@ export const skillGroups: SkillGroup[] = [
   {
     icon: 'mobile',
     title: { es: 'Mobile & Desktop', en: 'Mobile & Desktop' },
-    items: ['Jetpack Compose', 'React Native', 'Expo', 'Electron'],
+    items: ['Jetpack Compose', 'Kotlin Multiplatform', 'React Native', 'Expo', 'Electron', 'Tauri'],
   },
   {
     icon: 'iot',
     title: { es: 'IoT & Embebido', en: 'IoT & Embedded' },
-    items: ['Arduino', 'ESP32', 'MQTT', 'Azure IoT'],
+    items: ['Arduino', 'ESP32', 'MQTT', 'Mosquitto', 'Node-RED', 'Azure IoT', 'Gemelos digitales'],
   },
   {
     icon: 'cloud',
     title: { es: 'Cloud & DevOps', en: 'Cloud & DevOps' },
-    items: ['Azure', 'GCP', 'AWS', 'Firebase', 'Vercel', 'Docker', 'Kubernetes', 'Jenkins', 'Nginx'],
+    items: ['Azure', 'GCP', 'AWS', 'Cloudflare', 'Firebase', 'Vercel', 'Docker', 'Kubernetes', 'Jenkins', 'Nginx', 'Caddy'],
   },
   {
     icon: 'data',
     title: { es: 'Datos', en: 'Data' },
-    items: ['MySQL', 'PostgreSQL', 'MongoDB', 'Redis', 'Supabase', 'Firestore'],
+    items: ['MySQL', 'PostgreSQL', 'pgvector', 'MongoDB', 'Redis', 'SQLite', 'Cloudflare D1', 'InfluxDB', 'Grafana', 'Supabase', 'Firestore'],
   },
   {
     icon: 'ai',
     title: { es: 'IA / ML', en: 'AI / ML' },
-    items: ['TensorFlow', 'PyTorch', 'YOLO', 'MediaPipe', 'OpenCV'],
+    items: ['TensorFlow', 'PyTorch', 'scikit-learn', 'pandas', 'YOLO', 'ONNX Runtime', 'MediaPipe', 'OpenCV'],
   },
 ]
 
@@ -330,7 +334,7 @@ export const categories: { id: ProjectCategory; icon: 'briefcase' | 'rocket' | '
     id: 'iot',
     icon: 'radio',
     label: { es: 'IoT y nube', en: 'IoT & cloud' },
-    blurb: { es: 'Dispositivos, telemetría y tableros sobre Azure IoT Central.', en: 'Devices, telemetry and dashboards on Azure IoT Central.' },
+    blurb: { es: 'Dispositivos, telemetría por MQTT, series de tiempo y tableros, en Azure IoT Central y en infraestructura propia.', en: 'Devices, MQTT telemetry, time series and dashboards, on Azure IoT Central and self-hosted infrastructure.' },
   },
   {
     id: 'tools',
@@ -353,6 +357,7 @@ export interface Project {
     | 'bus' | 'factory' | 'graduation' | 'clipboard' | 'download' | 'wallet'
     | 'android' | 'gamepad' | 'radio' | 'heart' | 'wrench' | 'shirt' | 'egg'
     | 'tooth' | 'truck' | 'sparkles' | 'music' | 'dog' | 'hash'
+    | 'store' | 'bot' | 'city' | 'satellite' | 'notebook'
   kind: L
   accent: ProjectAccent
   blurb: L
@@ -373,6 +378,21 @@ export const projects: Project[] = [
     blurb: {
       es: 'Plataforma para un taller de hidrolavadoras Kärcher Gold Partner: catálogo, alquileres, seguimiento de reparaciones y boletas con fotos.',
       en: 'Platform for a Kärcher Gold Partner pressure-washer shop: catalog, rentals, repair tracking and photo receipts.',
+    },
+  },
+  {
+    name: 'The Mazon',
+    cat: 'custom',
+    url: 'https://themazon.com',
+    isPrivate: true,
+    shot: mazonShot,
+    tech: 'Cloudflare Pages · Workers · D1 · Bold · Brevo',
+    icon: 'store',
+    accent: 'coral',
+    kind: { es: 'E-commerce en producción', en: 'Live e-commerce' },
+    blurb: {
+      es: 'Tienda de servicios digitales con red de distribuidores: pagos con Bold, billetera, combos, referidos, cupones y tarjetas de regalo, correos automáticos con Brevo, tickets de soporte y un asistente con IA.',
+      en: 'Digital-services store with a reseller network: Bold payments, wallet, bundles, referrals, coupons and gift cards, automated Brevo emails, support tickets and an AI assistant.',
     },
   },
   {
@@ -436,15 +456,30 @@ export const projects: Project[] = [
   {
     name: 'Urban Mobility Hub',
     cat: 'product',
+    url: 'https://urbanmobility.duckdns.org',
     code: 'https://github.com/Joserraldo/urban-mobility-hub',
     shot: urbanShot,
-    tech: 'TypeScript · PWA · YOLOv8n-ONNX',
+    tech: 'TypeScript · PWA · YOLOv8n-ONNX · SSE · Brevo',
     icon: 'bus',
     accent: 'mint',
-    kind: { es: 'Plataforma', en: 'Platform' },
+    kind: { es: 'Plataforma IoT', en: 'IoT platform' },
     blurb: {
-      es: 'Alquiler, venta y domicilios de vehículos urbanos, con detección de casco corriendo en el navegador.',
-      en: 'Rental, sale and delivery of urban vehicles, with helmet detection running in the browser.',
+      es: 'Alquiler, venta y domicilios de patinetas, bicis y drones. Flota simulada con gemelos digitales en un mapa en vivo, detección de casco con IA en el navegador, roles de cliente, operador y domiciliario, pago con comprobante y avisos por correo.',
+      en: 'Rental, sale and delivery of scooters, bikes and drones. A simulated fleet of digital twins on a live map, in-browser AI helmet detection, client, operator and courier roles, payment receipts and email alerts.',
+    },
+  },
+  {
+    name: 'Solar Shield',
+    cat: 'product',
+    code: 'https://github.com/Joserraldo/nasa-space-apps-2026',
+    shot: nasaShot,
+    tech: 'React · Three.js · TypeScript · Vitest · Playwright',
+    icon: 'satellite',
+    accent: 'sky',
+    kind: { es: 'NASA Space Apps 2026', en: 'NASA Space Apps 2026' },
+    blurb: {
+      es: 'Juego web donde un niño dirige una base en Marte, habla con una tripulación de expertos y sobrevive a tormentas solares con datos de NASA. Equipo de 6: hice los agentes expertos, la integración, QA y el despliegue.',
+      en: 'Web game where a kid runs a Mars base, talks to a crew of experts and survives solar storms using NASA data. Team of 6: I built the expert agents, integration, QA and deployment.',
     },
   },
   {
@@ -475,6 +510,21 @@ export const projects: Project[] = [
     blurb: {
       es: 'Plataforma educativa con formación gamificada para una fundación sin ánimo de lucro.',
       en: 'Educational platform with gamified learning for a non-profit foundation.',
+    },
+  },
+  {
+    name: 'Asistente UNAB 360',
+    cat: 'ai',
+    url: 'https://chatbotunab.duckdns.org/app/',
+    code: 'https://github.com/Joserraldo/chatbot-academico-unab',
+    shot: unab360Shot,
+    tech: 'n8n · RAG pgvector · MCP · FastAPI · Kotlin · AWS',
+    icon: 'bot',
+    accent: 'gold',
+    kind: { es: 'Chatbot académico', en: 'Academic chatbot' },
+    blurb: {
+      es: 'Asistente que conoce notas, tareas, préstamos y riesgo académico. 7 flujos de n8n con router y guardrails, RAG con citas, servidor MCP con 18 herramientas, pagos con Bold, modelo de riesgo con scikit-learn y app Android. Desplegado en AWS con datos sintéticos.',
+      en: 'Assistant that knows grades, assignments, loans and academic risk. 7 n8n workflows with a router and guardrails, RAG with citations, an MCP server with 18 tools, Bold payments, a scikit-learn risk model and an Android app. Deployed on AWS with synthetic data.',
     },
   },
   {
@@ -534,6 +584,19 @@ export const projects: Project[] = [
     },
   },
   {
+    name: 'Ciencia de datos',
+    cat: 'ai',
+    code: 'https://github.com/Joserraldo/Apuntes-ciencia-de-datos-',
+    tech: 'Python · pandas · scikit-learn · Jupyter',
+    icon: 'notebook',
+    accent: 'violet',
+    kind: { es: 'Notebooks', en: 'Notebooks' },
+    blurb: {
+      es: 'Mis notebooks de la electiva: limpieza y análisis de datos, visualización y modelos de machine learning.',
+      en: 'My notebooks from the elective: data cleaning and analysis, visualization and machine learning models.',
+    },
+  },
+  {
     name: 'Metro y salud',
     cat: 'ai',
     code: 'https://github.com/Joserraldo/proyecto-IA-MetroPT-3',
@@ -544,6 +607,21 @@ export const projects: Project[] = [
     blurb: {
       es: 'Proyecto final de IA sobre un metro, con dashboard y app, más modelos de cardiopatías y diabetes.',
       en: 'Final AI project on a metro system, with dashboard and app, plus heart-disease and diabetes models.',
+    },
+  },
+  {
+    name: 'SmartCity BGA',
+    cat: 'iot',
+    url: 'https://smartcitybga.duckdns.org',
+    code: 'https://github.com/juan46buitrago/smartcity-iot',
+    shot: smartcityShot,
+    tech: 'MQTT · Node-RED · InfluxDB · Grafana · ESP32',
+    icon: 'city',
+    accent: 'mint',
+    kind: { es: 'Ciudad inteligente', en: 'Smart city' },
+    blurb: {
+      es: 'Centro de operaciones de Bucaramanga con 12 dispositivos (simulados, APIs reales y un ESP32 por MQTT/TLS), alertas y control remoto. Mi parte: Nodo, el asistente con agentes expertos por tema que calcula sobre InfluxDB. En equipo con Juan Buitrago y Santiago Cabeza.',
+      en: 'Operations center for Bucaramanga with 12 devices (simulated, real APIs and an ESP32 over MQTT/TLS), alerts and remote control. My part: Nodo, the assistant with topic-expert agents that computes over InfluxDB. Built with Juan Buitrago and Santiago Cabeza.',
     },
   },
   {
@@ -746,7 +824,7 @@ export const flagship = {
 /* ────────────────────────── timeline (4) ─────────────────────────── */
 
 export interface Milestone {
-  icon: 'rocket' | 'trophy' | 'sparkles' | 'cap' | 'bus' | 'factory' | 'medal' | 'graduation'
+  icon: 'rocket' | 'trophy' | 'sparkles' | 'cap' | 'bus' | 'factory' | 'medal' | 'graduation' | 'satellite'
   accent: ProjectAccent
   title: L
   org: L
@@ -755,6 +833,17 @@ export interface Milestone {
 }
 
 export const milestones: Milestone[] = [
+  {
+    icon: 'satellite',
+    accent: 'sky',
+    title: { es: 'NASA Space Apps Challenge 2026', en: 'NASA Space Apps Challenge 2026' },
+    org: { es: 'Solar Shield · Galactic Problem Solver', en: 'Solar Shield · Galactic Problem Solver' },
+    body: {
+      es: 'Juego educativo con datos de NASA, hecho en 48 horas por un equipo de 6. Certificado de participación destacada.',
+      en: 'Educational game built on NASA data in 48 hours by a team of 6. Certificate for outstanding participation.',
+    },
+    when: { es: 'nov 2026', en: 'Nov 2026' },
+  },
   {
     icon: 'trophy',
     accent: 'gold',
